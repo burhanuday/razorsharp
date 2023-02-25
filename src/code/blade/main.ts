@@ -6,12 +6,19 @@ import {
 } from "../types/Blade";
 import { transformFrame } from "./components/box";
 import { transformButton } from "./components/button";
+import { transformIcon } from "./components/icon";
 import { transformText } from "./components/text";
 import { transformTextInput } from "./components/textInput";
+import { isIconInstance } from "./utils/iconUtils";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
 ): string => {
+  // check if component instance is an icon
+  const isIcon = isIconInstance(bladeComponentInstance);
+  if (isIcon) return transformIcon(bladeComponentInstance);
+
+  // handle all other components
   switch (bladeComponentInstance.name) {
     case "Button":
       return transformButton(bladeComponentInstance);

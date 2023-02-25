@@ -19,8 +19,19 @@ const convertBaseNode = (
   return bladeNode;
 };
 
+/**
+ * Blade component structures arent simple
+ * In case of icons, name of the component can be found in the main component property
+ * In case of other components, use the parent's name instead
+ * @param figmaNode
+ * @returns name of the component in figma
+ */
 const getComponentName = (figmaNode: Readonly<InstanceNode>): string | null => {
-  return figmaNode.mainComponent?.parent?.name ?? null;
+  return (
+    figmaNode.mainComponent?.parent?.name ??
+    figmaNode.mainComponent?.name ??
+    null
+  );
 };
 
 const convertInstanceToNode = (

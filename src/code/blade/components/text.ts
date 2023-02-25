@@ -113,8 +113,6 @@ export const transformText = (bladeTextNode: BladeTextNode): string => {
     size,
   };
 
-  console.log(props, name, defaultValues);
-
   return component(name, {
     props,
     defaultValues,
