@@ -11,6 +11,7 @@ const textDefaultValues: Record<string, string> = {
 const titleDefaultValues: Record<string, string> = {
   size: "small",
   type: "normal",
+  variant: "title",
 };
 
 const headingDefaultValues: Record<string, string> = {

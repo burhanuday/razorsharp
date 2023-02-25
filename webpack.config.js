@@ -7,6 +7,7 @@ const webpack = require("webpack");
 const mode = process.env.NODE_ENV || "development";
 const prod = mode === "production";
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
   mode: prod ? "production" : "development",
 

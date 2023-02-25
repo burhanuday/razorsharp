@@ -24,7 +24,7 @@ const generateBladeComponentInstanceCode = (
 };
 
 const generateBladeFrameCode = (bladeNode: BladeFrameNode): string => {
-  return transformFrame(bladeNode);
+  return transformFrame(bladeNode, generateBladeCode);
 };
 
 const generateTextNodeCode = (bladeNode: BladeTextNode): string => {
