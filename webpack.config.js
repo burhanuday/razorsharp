@@ -71,4 +71,12 @@ module.exports = {
     }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/ui/]),
   ],
+
+  cache: {
+    type: "filesystem",
+    buildDependencies: {
+      config: [__filename],
+    },
+    cacheDirectory: path.resolve(__dirname, `./node_modules/.cache/webpack`),
+  },
 };
