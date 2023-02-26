@@ -31,6 +31,9 @@ export interface BladeTextNode extends BladeNode {
   textStyleId: TextNode["textStyleId"];
 }
 
-export type JSXValue = string | boolean | number;
+export type JSXValue = {
+  type: "string" | "boolean" | "number" | "instance";
+  value: string;
+};
 
 export type BladeProps = Record<string, JSXValue>;

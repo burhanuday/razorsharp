@@ -1,13 +1,13 @@
-import { BladeComponentInstanceNode } from "~/code/types/Blade";
+import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { component } from "../utils/component";
 import { convertFigmaIconNameToBladeIconName } from "../utils/iconUtils";
 
-const defaultValues: Record<string, string> = {};
+const defaultValues: BladeProps = {};
 
 export const transformIcon = (
   bladeInstance: BladeComponentInstanceNode
 ): string => {
-  const props = {};
+  const props: BladeProps = {};
 
   const bladeIconName = convertFigmaIconNameToBladeIconName(
     bladeInstance?.name || "unidentified-icon"

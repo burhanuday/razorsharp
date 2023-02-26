@@ -1,16 +1,25 @@
 import { BladeProps } from "~/code/types/Blade";
 import { attributes } from "./attributes";
 import { indent } from "./indent";
+import { isJSXValueEmpty } from "./isJSXValueEmpty";
 import { newLine } from "./newLine";
 
 const filterPropsWithDefaultValues = (
   props: BladeProps,
   defaultValues: BladeProps
 ): BladeProps => {
-  const filteredProps = {};
-  Object.entries(props).forEach(([key, value]) => {
-    if (value !== defaultValues[key]) {
-      filteredProps[key] = value;
+  const filteredProps: BladeProps = {};
+  Object.entries(props).forEach(([key, jsxValue]) => {
+    if (!key || isJSXValueEmpty(jsxValue)) {
+      return;
+    }
+
+    if (
+      isJSXValueEmpty(defaultValues[key]) ||
+      jsxValue.type !== defaultValues[key].type ||
+      jsxValue.value !== defaultValues[key].value
+    ) {
+      filteredProps[key] = jsxValue;
     }
   });
 

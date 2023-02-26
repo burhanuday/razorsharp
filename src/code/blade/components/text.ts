@@ -1,28 +1,28 @@
-import { BladeTextNode } from "~/code/types/Blade";
+import { BladeProps, BladeTextNode } from "~/code/types/Blade";
 import { component } from "../utils/component";
 
-const textDefaultValues: Record<string, string> = {
-  variant: "body",
-  weight: "regular",
-  size: "medium",
-  type: "normal",
+const textDefaultValues: BladeProps = {
+  variant: { value: "body", type: "string" },
+  weight: { value: "regular", type: "string" },
+  size: { value: "medium", type: "string" },
+  type: { value: "normal", type: "string" },
 };
 
-const titleDefaultValues: Record<string, string> = {
-  size: "small",
-  type: "normal",
-  variant: "title",
+const titleDefaultValues: BladeProps = {
+  size: { value: "small", type: "string" },
+  type: { value: "normal", type: "string" },
+  variant: { value: "title", type: "string" },
 };
 
-const headingDefaultValues: Record<string, string> = {
-  variant: "regular",
-  weight: "bold",
-  size: "small",
-  type: "normal",
+const headingDefaultValues: BladeProps = {
+  variant: { value: "regular", type: "string" },
+  weight: { value: "bold", type: "string" },
+  size: { value: "small", type: "string" },
+  type: { value: "normal", type: "string" },
 };
 
-const codeDefaultValues: Record<string, string> = {
-  size: "small",
+const codeDefaultValues: BladeProps = {
+  size: { value: "small", type: "string" },
 };
 
 const VARIANTS = [
@@ -80,7 +80,7 @@ const getWeight = (styleName: string): string => {
   return weight?.toLocaleLowerCase() ?? "";
 };
 
-const getDefaultValues = (name: string): Record<string, string> => {
+const getDefaultValues = (name: string): BladeProps => {
   return COMPONENT_TO_DEFAULT_VALUES_MAP[name];
 };
 
@@ -107,10 +107,10 @@ export const transformText = (bladeTextNode: BladeTextNode): string => {
   const defaultValues = getDefaultValues(name);
   const size = getSize(styleName);
 
-  const props = {
-    variant,
-    weight,
-    size,
+  const props: BladeProps = {
+    variant: { value: variant, type: "string" },
+    weight: { value: weight, type: "string" },
+    size: { value: size, type: "string" },
   };
 
   return component(name, {

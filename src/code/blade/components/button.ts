@@ -1,4 +1,8 @@
-import { BladeComponentInstanceNode, BladeTextNode } from "~/code/types/Blade";
+import {
+  BladeComponentInstanceNode,
+  BladeProps,
+  BladeTextNode,
+} from "~/code/types/Blade";
 import { jsxValue } from "../utils/attributes";
 import { component } from "../utils/component";
 import {
@@ -7,11 +11,11 @@ import {
 } from "../utils/iconUtils";
 import { traverseNodeTree } from "../utils/traverseNodeTree";
 
-const defaultValues: Record<string, string> = {
-  variant: "primary",
-  size: "medium",
-  isFullWidth: "false",
-  iconPosition: "left",
+const defaultValues: BladeProps = {
+  variant: { value: "primary", type: "string" },
+  size: { value: "medium", type: "string" },
+  isFullWidth: { value: "false", type: "boolean" },
+  iconPosition: { value: "left", type: "string" },
 };
 
 const transformButtonVariant = (variant: string): string => {
@@ -25,7 +29,7 @@ export const transformButton = (
 
   const size = componentProperties.size.value;
   const variant = componentProperties.variant.value;
-  let iconName = "";
+  let icon = "";
   let iconPosition = "";
 
   const labelTextNode = traverseNodeTree(
@@ -43,7 +47,7 @@ export const transformButton = (
     iconLeftNode !== null &&
     isIconInstance(iconLeftNode as BladeComponentInstanceNode)
   ) {
-    iconName = convertFigmaIconNameToBladeIconName(
+    icon = convertFigmaIconNameToBladeIconName(
       (iconLeftNode as BladeComponentInstanceNode)?.name || "unidentified-icon"
     );
     iconPosition = "left";
@@ -58,18 +62,30 @@ export const transformButton = (
     iconRightNode !== null &&
     isIconInstance(iconRightNode as BladeComponentInstanceNode)
   ) {
-    iconName = convertFigmaIconNameToBladeIconName(
+    icon = convertFigmaIconNameToBladeIconName(
       (iconRightNode as BladeComponentInstanceNode)?.name || "unidentified-icon"
     );
     iconPosition = "right";
   }
 
-  const props = {
-    size: jsxValue(size).toLowerCase(),
-    variant: transformButtonVariant(jsxValue(variant)),
-    isFullWidth: jsxValue(componentProperties.isFullWidth.value),
-    iconName,
-    iconPosition,
+  const props: BladeProps = {
+    size: { value: jsxValue(size).toLowerCase(), type: "string" },
+    variant: {
+      value: transformButtonVariant(jsxValue(variant)),
+      type: "string",
+    },
+    isFullWidth: {
+      value: jsxValue(componentProperties.isFullWidth.value),
+      type: "boolean",
+    },
+    icon: {
+      value: icon,
+      type: "instance",
+    },
+    iconPosition: {
+      value: iconPosition,
+      type: "string",
+    },
   };
 
   return component("Button", {

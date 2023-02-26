@@ -1,5 +1,6 @@
 import { BladeProps, JSXValue } from "~/code/types/Blade";
 import { indent } from "./indent";
+import { isJSXValueEmpty } from "./isJSXValueEmpty";
 import { newLine } from "./newLine";
 
 export const jsxValue = (value: string | boolean): string => {
@@ -9,20 +10,21 @@ export const jsxValue = (value: string | boolean): string => {
   return value;
 };
 
-export const jsxAttribute = (key: string, value: JSXValue): string => {
-  if (typeof value === "boolean") {
-    return value ? `${key}={true}` : `${key}={false}`;
+export const jsxAttribute = (key: string, jsxValue: JSXValue): string => {
+  if (
+    jsxValue.type === "number" ||
+    jsxValue.type === "boolean" ||
+    jsxValue.type === "instance"
+  ) {
+    return `${key}={${jsxValue.value}}`;
   }
 
-  if (value === "true" || value === "false" || typeof value === "number") {
-    return `${key}={${value}}`;
-  }
-  return `${key}="${value}"`;
+  return `${key}="${jsxValue.value}"`;
 };
 
 export const attributes = (props: BladeProps): string => {
   return Object.entries(props)
-    .filter(([, value]) => !!value)
+    .filter(([_, jsxValue]) => !isJSXValueEmpty(jsxValue))
     .map(([key, value]) => jsxAttribute(key, value))
     .map((item) => newLine(indent(item)))
     .join("");

@@ -9,8 +9,8 @@ import { isPresent } from "../utils/isPresent";
 import { traverseNodeTree } from "../utils/traverseNodeTree";
 
 const defaultValues: BladeProps = {
-  labelPosition: "top",
-  showClearButton: "false",
+  labelPosition: { value: "top", type: "string" },
+  showClearButton: { value: "false", type: "string" },
 };
 
 export const transformTextInput = (
@@ -30,24 +30,34 @@ export const transformTextInput = (
   const isSuffixPresent = isPresent(componentProperties.prefix.value);
 
   const props: BladeProps = {
-    labelPosition: jsxValue(
-      componentProperties.labelPosition.value
-    ).toLowerCase(),
-    showClearButton: jsxValue(componentProperties.showClearButton.value),
+    labelPosition: {
+      value: jsxValue(componentProperties.labelPosition.value).toLowerCase(),
+      type: "string",
+    },
+    showClearButton: {
+      value: jsxValue(componentProperties.showClearButton.value),
+      type: "boolean",
+    },
   };
 
   const labelTextNode = traverseNodeTree(
     bladeComponentInstance,
     (node) => node.layerName === "Label" && node.type === "TEXT"
   );
-  props["label"] = (labelTextNode as BladeTextNode)?.characters;
+  props["label"] = {
+    value: (labelTextNode as BladeTextNode)?.characters,
+    type: "string",
+  };
 
   if (isHelpTextPresent) {
     const helpTextNode = traverseNodeTree(
       bladeComponentInstance,
       (node) => node.layerName === "Help Text" && node.type === "TEXT"
     );
-    props["helpText"] = (helpTextNode as BladeTextNode)?.characters;
+    props["helpText"] = {
+      value: (helpTextNode as BladeTextNode)?.characters,
+      type: "string",
+    };
   }
 
   if (isMaxCharactersPresent) {
@@ -56,11 +66,11 @@ export const transformTextInput = (
       (node) => node.layerName === "Char Count" && node.type === "TEXT"
     );
 
-    const maxCharactersCount = Number(
-      (maxCharactersNode as BladeTextNode)?.characters.split("/")[1]
-    );
+    const maxCharactersCount = (
+      maxCharactersNode as BladeTextNode
+    )?.characters.split("/")[1];
 
-    props["maxCharacters"] = maxCharactersCount;
+    props["maxCharacters"] = { value: maxCharactersCount, type: "number" };
   }
 
   if (isSuffixPresent) {
@@ -69,7 +79,10 @@ export const transformTextInput = (
       (node) => node.layerName === "Trailing Label" && node.type === "TEXT"
     );
 
-    props["suffix"] = (suffixNode as BladeTextNode)?.characters;
+    props["suffix"] = {
+      value: (suffixNode as BladeTextNode)?.characters,
+      type: "string",
+    };
   }
 
   if (isPrefixPresent) {
@@ -78,7 +91,10 @@ export const transformTextInput = (
       (node) => node.layerName === "Leading Label" && node.type === "TEXT"
     );
 
-    props["prefix"] = (prefixNode as BladeTextNode)?.characters;
+    props["prefix"] = {
+      value: (prefixNode as BladeTextNode)?.characters,
+      type: "string",
+    };
   }
 
   return component("TextInput", { props, defaultValues });
