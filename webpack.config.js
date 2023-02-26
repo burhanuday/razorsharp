@@ -69,6 +69,7 @@ module.exports = {
       template: "./src/ui/index.html",
       filename: "index.html",
       chunks: ["ui"],
+      cache: false,
     }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/ui/]),
   ],
