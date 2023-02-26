@@ -1,4 +1,5 @@
 import { BladeProps, BladeTextNode } from "~/code/types/Blade";
+import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { component } from "../utils/component";
 
 const textDefaultValues: BladeProps = {
@@ -84,7 +85,9 @@ const getDefaultValues = (name: string): BladeProps => {
   return COMPONENT_TO_DEFAULT_VALUES_MAP[name];
 };
 
-export const transformText = (bladeTextNode: BladeTextNode): string => {
+export const transformText = (
+  bladeTextNode: BladeTextNode
+): TransformFunctionReturnType => {
   let styleName = "";
 
   if (typeof bladeTextNode.textStyleId === "string") {
@@ -94,11 +97,13 @@ export const transformText = (bladeTextNode: BladeTextNode): string => {
   }
 
   if (styleName.length === 0) {
-    return component("Text", {
-      props: {},
-      defaultValues: {},
-      children: bladeTextNode.characters,
-    });
+    return {
+      component: component("Text", {
+        props: {},
+        defaultValues: {},
+        children: bladeTextNode.characters,
+      }),
+    };
   }
 
   const variant = getComponentVariant(styleName) || "";
@@ -113,9 +118,11 @@ export const transformText = (bladeTextNode: BladeTextNode): string => {
     size: { value: size, type: "string" },
   };
 
-  return component(name, {
-    props,
-    defaultValues,
-    children: bladeTextNode.characters,
-  });
+  return {
+    component: component(name, {
+      props,
+      defaultValues,
+      children: bladeTextNode.characters,
+    }),
+  };
 };

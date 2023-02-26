@@ -3,6 +3,7 @@ import {
   BladeProps,
   BladeTextNode,
 } from "~/code/types/Blade";
+import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../utils/attributes";
 import { component } from "../utils/component";
 import { isPresent } from "../utils/isPresent";
@@ -15,7 +16,7 @@ const defaultValues: BladeProps = {
 
 export const transformTextInput = (
   bladeComponentInstance: BladeComponentInstanceNode
-): string => {
+): TransformFunctionReturnType => {
   const componentProperties = bladeComponentInstance.componentProperties;
 
   const isHelpTextPresent = isPresent(componentProperties.helpText.value);
@@ -97,5 +98,5 @@ export const transformTextInput = (
     };
   }
 
-  return component("TextInput", { props, defaultValues });
+  return { component: component("TextInput", { props, defaultValues }) };
 };

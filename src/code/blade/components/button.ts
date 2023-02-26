@@ -3,6 +3,7 @@ import {
   BladeProps,
   BladeTextNode,
 } from "~/code/types/Blade";
+import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../utils/attributes";
 import { component } from "../utils/component";
 import {
@@ -24,7 +25,7 @@ const transformButtonVariant = (variant: string): string => {
 
 export const transformButton = (
   bladeComponentInstance: BladeComponentInstanceNode
-): string => {
+): TransformFunctionReturnType => {
   const componentProperties = bladeComponentInstance.componentProperties;
 
   const size = componentProperties.size.value;
@@ -88,9 +89,11 @@ export const transformButton = (
     },
   };
 
-  return component("Button", {
-    props,
-    defaultValues,
-    children,
-  });
+  return {
+    component: component("Button", {
+      props,
+      defaultValues,
+      children,
+    }),
+  };
 };

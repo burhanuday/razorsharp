@@ -23,7 +23,7 @@ const run = () => {
 
   const result = generateBladeCode({
     bladeNodes: convertedSelection,
-  });
+  }).component;
 
   figma.ui.postMessage({
     type: "result",

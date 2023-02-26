@@ -4,6 +4,7 @@ import {
   BladeNode,
   BladeTextNode,
 } from "../types/Blade";
+import { TransformFunctionReturnType } from "../types/TransformFunction";
 import { transformFrame } from "./components/box";
 import { transformButton } from "./components/button";
 import { transformIcon } from "./components/icon";
@@ -13,7 +14,7 @@ import { isIconInstance } from "./utils/iconUtils";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
-): string => {
+): TransformFunctionReturnType => {
   // check if component instance is an icon
   const isIcon = isIconInstance(bladeComponentInstance);
   if (isIcon) return transformIcon(bladeComponentInstance);
@@ -26,15 +27,19 @@ const generateBladeComponentInstanceCode = (
       return transformTextInput(bladeComponentInstance);
 
     default:
-      return "";
+      return { component: "" };
   }
 };
 
-const generateBladeFrameCode = (bladeNode: BladeFrameNode): string => {
+const generateBladeFrameCode = (
+  bladeNode: BladeFrameNode
+): TransformFunctionReturnType => {
   return transformFrame(bladeNode, generateBladeCode);
 };
 
-const generateTextNodeCode = (bladeNode: BladeTextNode): string => {
+const generateTextNodeCode = (
+  bladeNode: BladeTextNode
+): TransformFunctionReturnType => {
   return transformText(bladeNode);
 };
 
@@ -42,23 +47,27 @@ export const generateBladeCode = ({
   bladeNodes,
 }: {
   bladeNodes: BladeNode[];
-}): string => {
-  let code = "";
+}): TransformFunctionReturnType => {
+  let componentCode = "";
 
   bladeNodes.forEach((bladeNode) => {
     switch (bladeNode.type) {
       case "INSTANCE":
-        code += generateBladeComponentInstanceCode(
+        componentCode += generateBladeComponentInstanceCode(
           bladeNode as BladeComponentInstanceNode
-        );
+        ).component;
         break;
 
       case "FRAME":
-        code += generateBladeFrameCode(bladeNode as BladeFrameNode);
+        componentCode += generateBladeFrameCode(
+          bladeNode as BladeFrameNode
+        ).component;
         break;
 
       case "TEXT":
-        code += generateTextNodeCode(bladeNode as BladeTextNode);
+        componentCode += generateTextNodeCode(
+          bladeNode as BladeTextNode
+        ).component;
         break;
 
       default:
@@ -66,5 +75,5 @@ export const generateBladeCode = ({
     }
   });
 
-  return code;
+  return { component: componentCode };
 };
