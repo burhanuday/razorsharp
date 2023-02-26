@@ -18,8 +18,6 @@ export const transformFrame = (
     bladeNodes: BladeNode[];
   }) => TransformFunctionReturnType
 ): TransformFunctionReturnType => {
-  console.log("🚀 ~ file: box.ts:15 ~ bladeFrame:", bladeFrame);
-
   const props: BladeProps = {};
 
   if (
