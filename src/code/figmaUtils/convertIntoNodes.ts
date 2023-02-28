@@ -1,6 +1,7 @@
 import {
   BladeComponentInstanceNode,
   BladeFrameNode,
+  BladeGroupNode,
   BladeNode,
   BladeTextNode,
 } from "../types/Blade";
@@ -20,7 +21,7 @@ const convertBaseNode = (
 };
 
 /**
- * Blade component structures arent simple
+ * Blade component structures aren't simple
  * In case of icons, name of the component can be found in the main component property
  * In case of other components, use the parent's name instead
  * @param figmaNode
@@ -82,6 +83,18 @@ const convertFrameToNode = (
   return bladeFrame;
 };
 
+const convertGroupToNode = (
+  figmaNode: Readonly<GroupNode>,
+  bladeNode: BladeNode
+): BladeGroupNode => {
+  const bladeGroupNode: BladeGroupNode = {
+    ...bladeNode,
+    type: "GROUP",
+    children: convertIntoBladeNodes(figmaNode.children, bladeNode),
+  };
+  return bladeGroupNode;
+};
+
 export const convertIntoBladeNodes = (
   figmaNodes: ReadonlyArray<SceneNode>,
   bladeParent: BladeNode | null
@@ -103,6 +116,9 @@ export const convertIntoBladeNodes = (
         break;
       case "FRAME":
         bladeNode = convertFrameToNode(figmaNode, bladeNode);
+        break;
+      case "GROUP":
+        bladeNode = convertGroupToNode(figmaNode, bladeNode);
         break;
       default:
         break;

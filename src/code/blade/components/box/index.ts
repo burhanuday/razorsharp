@@ -1,1 +1,1 @@
-export { transformFrame } from "./box";
+export { transformFrameOrGroup } from "./box";

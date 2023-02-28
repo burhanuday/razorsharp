@@ -1,11 +1,12 @@
 import {
   BladeComponentInstanceNode,
   BladeFrameNode,
+  BladeGroupNode,
   BladeNode,
   BladeTextNode,
 } from "../types/Blade";
 import { TransformFunctionReturnType } from "../types/TransformFunction";
-import { transformFrame } from "./components/box";
+import { transformFrameOrGroup } from "./components/box";
 import { transformButton } from "./components/button";
 import { transformIcon } from "./components/icon";
 import { transformText } from "./components/typography";
@@ -34,13 +35,19 @@ const generateBladeComponentInstanceCode = (
 const generateBladeFrameCode = (
   bladeNode: BladeFrameNode
 ): TransformFunctionReturnType => {
-  return transformFrame(bladeNode, generateBladeCode);
+  return transformFrameOrGroup(bladeNode, generateBladeCode);
 };
 
 const generateTextNodeCode = (
   bladeNode: BladeTextNode
 ): TransformFunctionReturnType => {
   return transformText(bladeNode);
+};
+
+const generateGroupNodeCode = (
+  bladeNode: BladeGroupNode
+): TransformFunctionReturnType => {
+  return transformFrameOrGroup(bladeNode, generateBladeCode);
 };
 
 export const generateBladeCode = ({
@@ -69,6 +76,11 @@ export const generateBladeCode = ({
           bladeNode as BladeTextNode
         ).component;
         break;
+
+      case "GROUP":
+        componentCode += generateGroupNodeCode(
+          bladeNode as BladeGroupNode
+        ).component;
 
       default:
         break;

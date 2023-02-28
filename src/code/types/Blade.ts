@@ -31,6 +31,11 @@ export interface BladeTextNode extends BladeNode {
   textStyleId: TextNode["textStyleId"];
 }
 
+export interface BladeGroupNode extends BladeNode {
+  type: "GROUP";
+  children: BladeNode[];
+}
+
 export type JSXValue = {
   type: "string" | "boolean" | "number" | "instance";
   value: string;
