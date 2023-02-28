@@ -2,8 +2,6 @@ import { BladeFrameNode, BladeNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { component } from "../utils/component";
 
-const HAS_BOX_BEEN_RELEASED = false;
-
 const defaultValues: BladeProps = {
   flexDirection: { value: "row", type: "string" },
   display: { value: "block", type: "string" },
@@ -45,16 +43,6 @@ export const transformFrame = (
     children = convertChildrenToCode({
       bladeNodes: bladeFrame.children,
     }).component;
-  }
-
-  if (!HAS_BOX_BEEN_RELEASED) {
-    return {
-      component: component("div", {
-        props: {},
-        defaultValues: {},
-        children,
-      }),
-    };
   }
 
   return {
