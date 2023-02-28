@@ -8,8 +8,8 @@ import { TransformFunctionReturnType } from "../types/TransformFunction";
 import { transformFrame } from "./components/box";
 import { transformButton } from "./components/button";
 import { transformIcon } from "./components/icon";
-import { transformText } from "./components/text";
-import { transformTextInput } from "./components/textInput";
+import { transformText } from "./components/typography";
+import { transformTextInput } from "./components/textinput";
 import { isIconInstance } from "./utils/iconUtils";
 
 const generateBladeComponentInstanceCode = (

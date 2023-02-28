@@ -1,9 +1,8 @@
 import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
-import { component } from "../utils/component";
-import { convertFigmaIconNameToBladeIconName } from "../utils/iconUtils";
-
-const defaultValues: BladeProps = {};
+import { component } from "../../utils/component";
+import { convertFigmaIconNameToBladeIconName } from "../../utils/iconUtils";
+import { defaultValues } from "./constants";
 
 export const transformIcon = (
   bladeInstance: BladeComponentInstanceNode

@@ -1,12 +1,7 @@
 import { BladeFrameNode, BladeNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
-import { component } from "../utils/component";
-
-const defaultValues: BladeProps = {
-  flexDirection: { value: "row", type: "string" },
-  display: { value: "block", type: "string" },
-  gap: { value: "0", type: "string" },
-};
+import { component } from "../../utils/component";
+import { defaultValues } from "./constants";
 
 export const transformFrame = (
   bladeFrame: BladeFrameNode,

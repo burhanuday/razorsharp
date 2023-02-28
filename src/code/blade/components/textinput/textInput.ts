@@ -4,15 +4,11 @@ import {
   BladeTextNode,
 } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
-import { jsxValue } from "../utils/attributes";
-import { component } from "../utils/component";
-import { isPresent } from "../utils/isPresent";
-import { traverseNodeTree } from "../utils/traverseNodeTree";
-
-const defaultValues: BladeProps = {
-  labelPosition: { value: "top", type: "string" },
-  showClearButton: { value: "false", type: "string" },
-};
+import { jsxValue } from "../../utils/attributes";
+import { component } from "../../utils/component";
+import { isPresent } from "../../utils/isPresent";
+import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { defaultValues } from "./constants";
 
 export const transformTextInput = (
   bladeComponentInstance: BladeComponentInstanceNode

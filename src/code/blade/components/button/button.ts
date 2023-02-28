@@ -4,24 +4,15 @@ import {
   BladeTextNode,
 } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
-import { jsxValue } from "../utils/attributes";
-import { component } from "../utils/component";
+import { jsxValue } from "../../utils/attributes";
+import { component } from "../../utils/component";
 import {
   convertFigmaIconNameToBladeIconName,
   isIconInstance,
-} from "../utils/iconUtils";
-import { traverseNodeTree } from "../utils/traverseNodeTree";
-
-const defaultValues: BladeProps = {
-  variant: { value: "primary", type: "string" },
-  size: { value: "medium", type: "string" },
-  isFullWidth: { value: "false", type: "boolean" },
-  iconPosition: { value: "left", type: "string" },
-};
-
-const transformButtonVariant = (variant: string): string => {
-  return variant.toLowerCase().split(" ")[0];
-};
+} from "../../utils/iconUtils";
+import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { defaultValues } from "./constants";
+import { transformButtonVariant } from "./utils";
 
 export const transformButton = (
   bladeComponentInstance: BladeComponentInstanceNode
