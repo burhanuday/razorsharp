@@ -30,14 +30,12 @@ export function App() {
 
   return (
     <div className="container">
+      <section>
+        <CodePreview code={code} />
+      </section>
       <nav>
         <ul>
-          <li>
-            <label>
-              <input type="checkbox" />
-              Add helper code
-            </label>
-          </li>
+          <li></li>
         </ul>
         <ul>
           <li>
@@ -47,9 +45,6 @@ export function App() {
           </li>
         </ul>
       </nav>
-      <section>
-        <CodePreview code={code} />
-      </section>
     </div>
   );
 }
