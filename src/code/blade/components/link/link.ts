@@ -12,6 +12,7 @@ import {
 } from "../../utils/iconUtils";
 import { traverseNodeTree } from "../../utils/traverseNodeTree";
 import { defaultValues } from "./constants";
+import { getLinkIconProps } from "./utils";
 
 export const transformLink = (
   bladeInstance: BladeComponentInstanceNode
@@ -20,46 +21,7 @@ export const transformLink = (
     bladeInstance.componentProperties.size.value
   ).toLowerCase();
 
-  let icon = "";
-  let iconPosition = "";
-
-  let iconLeftNode = traverseNodeTree(
-    bladeInstance,
-    (bladeNode) => bladeNode.layerName === "Icon Left"
-  );
-
-  if (iconLeftNode !== null) {
-    iconLeftNode = traverseNodeTree(
-      iconLeftNode,
-      (bladeNode) => bladeNode.layerName === "Icon (change here)"
-    );
-    if (isIconInstance(iconLeftNode as BladeComponentInstanceNode)) {
-      icon = convertFigmaIconNameToBladeIconName(
-        (iconLeftNode as BladeComponentInstanceNode)?.name ||
-          "unidentified-icon"
-      );
-      iconPosition = "left";
-    }
-  }
-
-  let iconRightNode = traverseNodeTree(
-    bladeInstance,
-    (bladeNode) => bladeNode.layerName === "Icon Right"
-  );
-
-  if (iconRightNode !== null) {
-    iconRightNode = traverseNodeTree(
-      iconRightNode,
-      (bladeNode) => bladeNode.layerName === "Icon (change here)"
-    );
-    if (isIconInstance(iconRightNode as BladeComponentInstanceNode)) {
-      icon = convertFigmaIconNameToBladeIconName(
-        (iconRightNode as BladeComponentInstanceNode)?.name ||
-          "unidentified-icon"
-      );
-      iconPosition = "right";
-    }
-  }
+  const { icon, iconPosition } = getLinkIconProps(bladeInstance);
 
   const text = traverseNodeTree(
     bladeInstance,
