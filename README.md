@@ -5,7 +5,7 @@
 | Button        | ✅     |
 | Link          | ✅     |
 | CheckboxGroup |        |
-| Checkbox      |        |
+| Checkbox      | ✅     |
 | Text          | ✅     |
 | Title         | ✅     |
 | Heading       | ✅     |

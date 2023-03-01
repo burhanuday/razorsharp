@@ -6,10 +6,6 @@ import {
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
-import {
-  convertFigmaIconNameToBladeIconName,
-  isIconInstance,
-} from "../../utils/iconUtils";
 import { traverseNodeTree } from "../../utils/traverseNodeTree";
 import { defaultValues } from "./constants";
 import { getLinkIconProps } from "./utils";

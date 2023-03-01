@@ -14,6 +14,7 @@ import { transformTextInput } from "./components/textinput";
 import { isIconInstance } from "./utils/iconUtils";
 import { transformBadge } from "./components/badge";
 import { transformLink } from "./components/link";
+import { transformCheckbox } from "./components/checkbox";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -32,6 +33,8 @@ const generateBladeComponentInstanceCode = (
       return transformBadge(bladeComponentInstance);
     case "Link":
       return transformLink(bladeComponentInstance);
+    case "Checkbox":
+      return transformCheckbox(bladeComponentInstance);
 
     default:
       return { component: "" };
