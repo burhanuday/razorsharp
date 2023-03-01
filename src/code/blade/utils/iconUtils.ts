@@ -20,7 +20,7 @@ export const convertFigmaIconNameToBladeIconName = (
     .reduce((acc, current) => acc + current, "") + "Icon";
 
 /**
- * Convert icon names from figma to icon names used by Blade in code
+ * Check if an icon name is present in Figma
  * eg - alert-triangle -> AlertTriangleIcon
  * @param instanceName figma name of the icon
  * @returns whether name is a blade icon name
