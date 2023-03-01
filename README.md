@@ -3,7 +3,7 @@
 | Component     | Status |
 | ------------- | ------ |
 | Button        | ✅     |
-| Link          |        |
+| Link          | ✅     |
 | CheckboxGroup |        |
 | Checkbox      |        |
 | Text          | ✅     |
