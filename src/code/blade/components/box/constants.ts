@@ -4,6 +4,8 @@ export const defaultValues: BladeProps = {
   flexDirection: { value: "row", type: "string" },
   display: { value: "block", type: "string" },
   gap: { value: "0", type: "string" },
+  justifyContent: { value: "start", type: "string" },
+  alignItems: { value: "start", type: "string" },
 };
 
 export const LAYOUT_MODES = {
