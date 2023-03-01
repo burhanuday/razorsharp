@@ -38,5 +38,8 @@ export const isIconInstance = (
   if (!instanceName) {
     return false;
   }
-  return isIconName(instanceName);
+  return (
+    isIconName(instanceName) &&
+    Object.keys(bladeNode.componentProperties).length === 0
+  );
 };
