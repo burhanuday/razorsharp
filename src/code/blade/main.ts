@@ -12,6 +12,7 @@ import { transformIcon } from "./components/icon";
 import { transformText } from "./components/typography";
 import { transformTextInput } from "./components/textinput";
 import { isIconInstance } from "./utils/iconUtils";
+import { transformBadge } from "./components/badge";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -26,6 +27,8 @@ const generateBladeComponentInstanceCode = (
       return transformButton(bladeComponentInstance);
     case "Text Input":
       return transformTextInput(bladeComponentInstance);
+    case "Badge":
+      return transformBadge(bladeComponentInstance);
 
     default:
       return { component: "" };

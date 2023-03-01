@@ -10,13 +10,13 @@ import {
 export const getSize = (styleName: string): string => {
   const size = FONT_SIZES.find((size) => styleName.includes(size));
 
-  return size?.toLocaleLowerCase() ?? "";
+  return size?.toLowerCase() ?? "";
 };
 
 export const getComponentVariant = (styleName: string): string => {
   const variant = VARIANTS.find((variant) => styleName.includes(variant));
 
-  return variant?.toLocaleLowerCase() ?? "";
+  return variant?.toLowerCase() ?? "";
 };
 
 export const getComponentName = (variant: string): string => {
@@ -30,7 +30,7 @@ export const getComponentName = (variant: string): string => {
 export const getWeight = (styleName: string): string => {
   const weight = FONT_WEIGHTS.find((weight) => styleName.includes(weight));
 
-  return weight?.toLocaleLowerCase() ?? "";
+  return weight?.toLowerCase() ?? "";
 };
 
 export const getDefaultValues = (name: string): BladeProps => {
