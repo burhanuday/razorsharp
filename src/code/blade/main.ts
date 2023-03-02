@@ -13,6 +13,7 @@ import {
   transformHeading,
   transformText,
   transformTitle,
+  transformTextNode,
 } from "./components/typography";
 import { transformTextInput } from "./components/textinput";
 import { isIconInstance } from "./utils/iconUtils";
@@ -48,6 +49,8 @@ const generateBladeComponentInstanceCode = (
       return transformTitle(bladeComponentInstance);
     case "Heading":
       return transformHeading(bladeComponentInstance);
+    case "Text":
+      return transformText(bladeComponentInstance);
 
     default:
       return { component: "" };
@@ -63,7 +66,7 @@ const generateBladeFrameCode = (
 const generateTextNodeCode = (
   bladeNode: BladeTextNode
 ): TransformFunctionReturnType => {
-  return transformText(bladeNode);
+  return transformTextNode(bladeNode);
 };
 
 const generateGroupNodeCode = (

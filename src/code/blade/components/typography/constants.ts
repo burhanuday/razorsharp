@@ -5,6 +5,7 @@ export const textDefaultValues: BladeProps = {
   weight: { value: "regular", type: "string" },
   size: { value: "medium", type: "string" },
   type: { value: "normal", type: "string" },
+  contrast: { value: "low", type: "string" },
 };
 
 export const titleDefaultValues: BladeProps = {

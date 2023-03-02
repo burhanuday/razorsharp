@@ -9,7 +9,7 @@ import {
   getWeight,
 } from "./utils";
 
-export const transformText = (
+export const transformTextNode = (
   bladeTextNode: BladeTextNode
 ): TransformFunctionReturnType => {
   let styleName = "";
