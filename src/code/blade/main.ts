@@ -26,10 +26,15 @@ import {
 } from "./components/checkbox";
 import { transformRadio, transformRadioGroup } from "./components/radio";
 import { transformAlert } from "./components/alert";
+import { transformSpinner } from "./components/spinner";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
+  // console.log(
+  //   "🚀 ~ file: main.ts:34 ~ bladeComponentInstance:",
+  //   bladeComponentInstance
+  // );
   // check if component instance is an icon
   const isIcon = isIconInstance(bladeComponentInstance);
   if (isIcon) return transformIcon(bladeComponentInstance);
@@ -62,6 +67,8 @@ const generateBladeComponentInstanceCode = (
       return transformRadioGroup(bladeComponentInstance);
     case "Alert":
       return transformAlert(bladeComponentInstance);
+    case "Spinner":
+      return transformSpinner(bladeComponentInstance);
     default:
       return { component: "" };
   }

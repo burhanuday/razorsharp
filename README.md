@@ -14,7 +14,7 @@
 | Badge         | ✅ Done                           |
 | Alert         | ✅ Done                           |
 | TextInput     | ✅ Done                           |
-| Spinner       |                                   |
+| Spinner       | ✅ Done                           |
 | TextArea      |                                   |
 | PasswordInput |                                   |
 | Code          | ✅ Done                           |
