@@ -18,6 +18,7 @@
 | TextArea      |        |
 | PasswordInput |        |
 | Code          | ✅     |
+| CodeBlock     | ⚠️     |
 | OTPInput      |        |
 | Counter       |        |
 | IconButton    |        |
