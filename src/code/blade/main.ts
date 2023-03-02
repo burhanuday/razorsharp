@@ -20,7 +20,12 @@ import { transformTextInput } from "./components/textinput";
 import { isIconInstance } from "./utils/iconUtils";
 import { transformBadge } from "./components/badge";
 import { transformLink } from "./components/link";
-import { transformCheckbox } from "./components/checkbox";
+import {
+  transformCheckbox,
+  transformCheckboxGroup,
+} from "./components/checkbox";
+import { transformRadio, transformRadioGroup } from "./components/radio";
+import { transformAlert } from "./components/alert";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -49,7 +54,14 @@ const generateBladeComponentInstanceCode = (
       return transformText(bladeComponentInstance);
     case "Code":
       return transformCode(bladeComponentInstance);
-
+    case "Radio-Button":
+      return transformRadio(bladeComponentInstance);
+    case "Checkbox-Group":
+      return transformCheckboxGroup(bladeComponentInstance);
+    case "Radio-Group":
+      return transformRadioGroup(bladeComponentInstance);
+    case "Alert":
+      return transformAlert(bladeComponentInstance);
     default:
       return { component: "" };
   }

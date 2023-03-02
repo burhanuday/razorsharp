@@ -1,39 +1,39 @@
 # Blade to code
 
-| Component     | Status |
-| ------------- | ------ |
-| Button        | ✅     |
-| Link          | ✅     |
-| CheckboxGroup |        |
-| Checkbox      | ✅     |
-| Text          | ✅     |
-| Title         | ✅     |
-| Heading       | ✅     |
-| RadioGroup    |        |
-| Radio         |        |
-| Badge         | ✅     |
-| Alert         |        |
-| TextInput     | ✅     |
-| Spinner       |        |
-| TextArea      |        |
-| PasswordInput |        |
-| Code          | ✅     |
-| CodeBlock     | ⚠️     |
-| OTPInput      |        |
-| Counter       |        |
-| IconButton    |        |
-| Indicator     |        |
-| Card          |        |
-| ProgressBar   |        |
-| List          |        |
-| SelectInput   |        |
-| Dropdown      |        |
-| ActionList    |        |
-| Amount        |        |
-| Toggle        |        |
-| BottomSheet   |        |
-| Tooltip       |        |
-| Modal         |        |
-| Accordion     |        |
-| Tags          |        |
-| Layout        | ✅     |
+| Component     | Status                            |
+| ------------- | --------------------------------- |
+| Button        | ✅ Done                           |
+| Link          | ✅ Done                           |
+| CheckboxGroup | ✅ Done                           |
+| Checkbox      | ✅ Done                           |
+| Text          | ✅ Done                           |
+| Title         | ✅ Done                           |
+| Heading       | ✅ Done                           |
+| RadioGroup    | ✅ Done                           |
+| Radio         | ✅ Done                           |
+| Badge         | ✅ Done                           |
+| Alert         | ✅ Done                           |
+| TextInput     | ✅ Done                           |
+| Spinner       |                                   |
+| TextArea      |                                   |
+| PasswordInput |                                   |
+| Code          | ✅ Done                           |
+| CodeBlock     | ⚠️ Blade component does not exist |
+| OTPInput      |                                   |
+| Counter       |                                   |
+| IconButton    |                                   |
+| Indicator     |                                   |
+| Card          |                                   |
+| ProgressBar   |                                   |
+| List          |                                   |
+| SelectInput   |                                   |
+| Dropdown      |                                   |
+| ActionList    |                                   |
+| Amount        | ⏰ Not yet released               |
+| Toggle        | ⏰ Not yet released               |
+| BottomSheet   | ⏰ Not yet released               |
+| Tooltip       | ⏰ Not yet released               |
+| Modal         | ⏰ Not yet released               |
+| Accordion     | ⏰ Not yet released               |
+| Tags          | ⏰ Not yet released               |
+| Layout        | ⏰ Not yet released               |
