@@ -11,6 +11,7 @@ export const titleDefaultValues: BladeProps = {
   size: { value: "small", type: "string" },
   type: { value: "normal", type: "string" },
   variant: { value: "title", type: "string" },
+  contrast: { value: "low", type: "string" },
 };
 
 export const headingDefaultValues: BladeProps = {
