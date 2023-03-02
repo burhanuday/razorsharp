@@ -19,6 +19,7 @@ export const headingDefaultValues: BladeProps = {
   weight: { value: "bold", type: "string" },
   size: { value: "small", type: "string" },
   type: { value: "normal", type: "string" },
+  contrast: { value: "low", type: "string" },
 };
 
 export const codeDefaultValues: BladeProps = {

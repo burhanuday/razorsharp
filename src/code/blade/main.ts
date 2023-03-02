@@ -9,7 +9,11 @@ import { TransformFunctionReturnType } from "../types/TransformFunction";
 import { transformFrameOrGroup } from "./components/box";
 import { transformButton } from "./components/button";
 import { transformIcon } from "./components/icon";
-import { transformText, transformTitle } from "./components/typography";
+import {
+  transformHeading,
+  transformText,
+  transformTitle,
+} from "./components/typography";
 import { transformTextInput } from "./components/textinput";
 import { isIconInstance } from "./utils/iconUtils";
 import { transformBadge } from "./components/badge";
@@ -19,10 +23,10 @@ import { transformCheckbox } from "./components/checkbox";
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
-  // console.log(
-  //   "🚀 ~ file: main.ts:22 ~ bladeComponentInstance:",
-  //   bladeComponentInstance
-  // );
+  console.log(
+    "🚀 ~ file: main.ts:22 ~ bladeComponentInstance:",
+    bladeComponentInstance
+  );
 
   // check if component instance is an icon
   const isIcon = isIconInstance(bladeComponentInstance);
@@ -42,6 +46,8 @@ const generateBladeComponentInstanceCode = (
       return transformCheckbox(bladeComponentInstance);
     case "Title":
       return transformTitle(bladeComponentInstance);
+    case "Heading":
+      return transformHeading(bladeComponentInstance);
 
     default:
       return { component: "" };
