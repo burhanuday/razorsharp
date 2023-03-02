@@ -14,6 +14,7 @@ import {
   transformText,
   transformTitle,
   transformTextNode,
+  transformCode,
 } from "./components/typography";
 import { transformTextInput } from "./components/textinput";
 import { isIconInstance } from "./utils/iconUtils";
@@ -24,11 +25,6 @@ import { transformCheckbox } from "./components/checkbox";
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
-  console.log(
-    "🚀 ~ file: main.ts:22 ~ bladeComponentInstance:",
-    bladeComponentInstance
-  );
-
   // check if component instance is an icon
   const isIcon = isIconInstance(bladeComponentInstance);
   if (isIcon) return transformIcon(bladeComponentInstance);
@@ -51,6 +47,8 @@ const generateBladeComponentInstanceCode = (
       return transformHeading(bladeComponentInstance);
     case "Text":
       return transformText(bladeComponentInstance);
+    case "Code":
+      return transformCode(bladeComponentInstance);
 
     default:
       return { component: "" };
