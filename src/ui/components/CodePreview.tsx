@@ -1,21 +1,27 @@
-import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/nightOwl";
+import { useMemo } from "preact/hooks";
+import Prism from "./prism";
+import "./prism.css";
 
-export const CodePreview = ({ code }: { code: string }) => {
-  return (
-    <Highlight {...defaultProps} code={code} language="jsx" theme={theme}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: "15px" }}>
-          {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </pre>
-      )}
-    </Highlight>
+interface CodePreviewProps {
+  content: string;
+  language?: string;
+}
+
+export function CodePreview({
+  content,
+  language = "jsx",
+}: CodePreviewProps): JSX.Element {
+  const highlighted = useMemo(
+    () => Prism.highlight(content, Prism.languages["jsx"], "jsx"),
+    [content, language]
   );
-};
+
+  return (
+    <pre>
+      <code
+        className="language-jsx"
+        dangerouslySetInnerHTML={{ __html: highlighted }}
+      />
+    </pre>
+  );
+}

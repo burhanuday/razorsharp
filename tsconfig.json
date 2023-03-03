@@ -11,7 +11,6 @@
     "lib": ["es6", "dom", "esnext.asynciterable", "es2017"],
     "sourceMap": true,
     "allowJs": true,
-    "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
@@ -24,6 +23,8 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
-    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
+    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "preact/hooks";
 import copy from "clipboard-copy";
 import { CodePreview } from "./components/CodePreview";
 
@@ -31,7 +31,7 @@ export function App() {
   return (
     <div className="container">
       <section>
-        <CodePreview code={code} />
+        <CodePreview content={code} />
       </section>
       <nav>
         <ul>
