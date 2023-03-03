@@ -51,8 +51,8 @@ export const transformFrameOrGroup = (
     };
 
     props["gap"] = {
-      value: `${bladeFrame.itemSpacing}`,
-      type: "number",
+      value: `${bladeFrame.itemSpacing}px`,
+      type: "string",
     };
 
     let justifyContent = "";
