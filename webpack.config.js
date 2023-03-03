@@ -1,4 +1,4 @@
-const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
+const InlineChunkHtmlPlugin = require("inline-chunk-html-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const path = require("path");
