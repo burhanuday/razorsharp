@@ -22,6 +22,10 @@ export const transformFrameOrGroup = (
 ): TransformFunctionReturnType => {
   const props: BladeProps = {};
 
+  // TODO groups can have item spacing as well
+  // since item spacing figma property does not exist
+  // for groups, use relative transform matrix to find the
+  // distances between elements in a group
   if (bladeFrame.type === "GROUP") {
     let children = "";
     if (bladeFrame.children && bladeFrame.children.length > 0) {
