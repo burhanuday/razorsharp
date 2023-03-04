@@ -46,6 +46,15 @@ export const transformTextInput = (
     type: "string",
   };
 
+  const placeholderTextNode = traverseNodeTree(
+    bladeComponentInstance,
+    (node) => node.layerName === "Placeholder" && node.type === "TEXT"
+  );
+  props["placeholder"] = {
+    value: (placeholderTextNode as BladeTextNode)?.characters?.trim(),
+    type: "string",
+  };
+
   if (isHelpTextPresent) {
     const helpTextNode = traverseNodeTree(
       bladeComponentInstance,
