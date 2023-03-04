@@ -16,7 +16,7 @@
 | TextInput     | ✅ Done                      |
 | Spinner       | ✅ Done                      |
 | TextArea      | ✅ Done                      |
-| PasswordInput |                              |
+| PasswordInput | ✅ Done                      |
 | Code          | ✅ Done                      |
 | OTPInput      |                              |
 | Counter       |                              |

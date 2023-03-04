@@ -16,7 +16,11 @@ import {
   transformTextNode,
   transformCode,
 } from "./components/typography";
-import { transformTextArea, transformTextInput } from "./components/input";
+import {
+  transformPasswordInput,
+  transformTextArea,
+  transformTextInput,
+} from "./components/input";
 import { isIconInstance } from "./utils/iconUtils";
 import { transformBadge } from "./components/badge";
 import { transformLink } from "./components/link";
@@ -71,6 +75,8 @@ const generateBladeComponentInstanceCode = (
       return transformSpinner(bladeComponentInstance);
     case "TextArea Input":
       return transformTextArea(bladeComponentInstance);
+    case "Password Input":
+      return transformPasswordInput(bladeComponentInstance);
     default:
       return { component: "" };
   }
