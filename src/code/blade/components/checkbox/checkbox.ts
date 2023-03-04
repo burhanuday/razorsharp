@@ -7,13 +7,13 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { checkboxDefaultValues } from "./constants";
 
 export const transformCheckbox = (
   bladeInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
-  const labelTextNode = traverseNodeTree(
+  const labelTextNode = findNode(
     bladeInstance,
     (node) => node.layerName === "Label" && node.type === "TEXT"
   );
@@ -25,7 +25,7 @@ export const transformCheckbox = (
 
   let helpText = "";
   if (isHelpTextPresent) {
-    const helpTextNode = traverseNodeTree(
+    const helpTextNode = findNode(
       bladeInstance,
       (node) => node.layerName === "Help Text" && node.type === "TEXT"
     );

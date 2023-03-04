@@ -13,7 +13,7 @@ const canHaveChildren = (
   );
 };
 
-export const traverseNodeTree = (
+export const findNode = (
   node: BladeNode,
   processNode: (node: BladeNode) => boolean
 ): null | BladeNode => {
@@ -27,7 +27,7 @@ export const traverseNodeTree = (
       const children = node.children;
 
       for (const child of children) {
-        const newNode = traverseNodeTree(child, processNode);
+        const newNode = findNode(child, processNode);
         if (newNode) {
           return newNode;
         }

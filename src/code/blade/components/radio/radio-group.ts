@@ -8,14 +8,14 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { transformRadio } from "./radio";
 import { defaultValues } from "./constants";
 
 export const transformRadioGroup = (
   bladeInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
-  const labelTextNode = traverseNodeTree(
+  const labelTextNode = findNode(
     bladeInstance,
     (node) =>
       node.layerName === "Label" &&
@@ -30,7 +30,7 @@ export const transformRadioGroup = (
 
   let helpText = "";
   if (isHelpTextPresent) {
-    const helpTextNode = traverseNodeTree(
+    const helpTextNode = findNode(
       bladeInstance,
       (node) =>
         node.layerName === "Help Text" &&
@@ -59,7 +59,7 @@ export const transformRadioGroup = (
     },
   };
 
-  const childrenWrapper = traverseNodeTree(
+  const childrenWrapper = findNode(
     bladeInstance,
     (node) => node.layerName === "Radio Button Group" && node.type === "FRAME"
   ) as BladeFrameNode;

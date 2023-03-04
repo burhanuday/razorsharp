@@ -7,7 +7,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 
 export const transformTextInput = (
@@ -37,7 +37,7 @@ export const transformTextInput = (
     },
   };
 
-  const labelTextNode = traverseNodeTree(
+  const labelTextNode = findNode(
     bladeComponentInstance,
     (node) => node.layerName === "Label" && node.type === "TEXT"
   );
@@ -46,7 +46,7 @@ export const transformTextInput = (
     type: "string",
   };
 
-  const placeholderTextNode = traverseNodeTree(
+  const placeholderTextNode = findNode(
     bladeComponentInstance,
     (node) => node.layerName === "Placeholder" && node.type === "TEXT"
   );
@@ -56,7 +56,7 @@ export const transformTextInput = (
   };
 
   if (isHelpTextPresent) {
-    const helpTextNode = traverseNodeTree(
+    const helpTextNode = findNode(
       bladeComponentInstance,
       (node) => node.layerName === "Help Text" && node.type === "TEXT"
     );
@@ -67,7 +67,7 @@ export const transformTextInput = (
   }
 
   if (isMaxCharactersPresent) {
-    const maxCharactersNode = traverseNodeTree(
+    const maxCharactersNode = findNode(
       bladeComponentInstance,
       (node) => node.layerName === "Char Count" && node.type === "TEXT"
     );
@@ -80,7 +80,7 @@ export const transformTextInput = (
   }
 
   if (isSuffixPresent) {
-    const suffixNode = traverseNodeTree(
+    const suffixNode = findNode(
       bladeComponentInstance,
       (node) => node.layerName === "Trailing Label" && node.type === "TEXT"
     );
@@ -92,7 +92,7 @@ export const transformTextInput = (
   }
 
   if (isPrefixPresent) {
-    const prefixNode = traverseNodeTree(
+    const prefixNode = findNode(
       bladeComponentInstance,
       (node) => node.layerName === "Leading Label" && node.type === "TEXT"
     );

@@ -6,7 +6,7 @@ import {
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 import { getLinkIconProps } from "./utils";
 
@@ -19,7 +19,7 @@ export const transformLink = (
 
   const { icon, iconPosition } = getLinkIconProps(bladeInstance);
 
-  const text = traverseNodeTree(
+  const text = findNode(
     bladeInstance,
     (node) => node.layerName === "Text" && node.type === "TEXT"
   );

@@ -7,7 +7,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 
 export const transformSpinner = (
@@ -29,7 +29,7 @@ export const transformSpinner = (
 
   const isLabelPresent = isPresent(componentProperties.label?.value);
   if (isLabelPresent) {
-    const labelTextNode = traverseNodeTree(
+    const labelTextNode = findNode(
       bladeInstance,
       (node) => node.type === "TEXT" && node.layerName === "Label"
     );

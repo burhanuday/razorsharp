@@ -10,7 +10,7 @@ import {
   convertFigmaIconNameToBladeIconName,
   isIconInstance,
 } from "../../utils/iconUtils";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 import { transformButtonVariant } from "./utils";
 
@@ -24,13 +24,13 @@ export const transformButton = (
   let icon = "";
   let iconPosition = "";
 
-  const labelTextNode = traverseNodeTree(
+  const labelTextNode = findNode(
     bladeComponentInstance,
     (node) => node.layerName === "Text" && node.type === "TEXT"
   );
   const children = (labelTextNode as BladeTextNode)?.characters;
 
-  const iconLeftNode = traverseNodeTree(
+  const iconLeftNode = findNode(
     bladeComponentInstance,
     (bladeNode) => bladeNode.layerName === "Icon Left"
   );
@@ -45,7 +45,7 @@ export const transformButton = (
     iconPosition = "left";
   }
 
-  const iconRightNode = traverseNodeTree(
+  const iconRightNode = findNode(
     bladeComponentInstance,
     (bladeNode) => bladeNode.layerName === "Icon Right"
   );

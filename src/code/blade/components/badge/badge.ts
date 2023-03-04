@@ -12,7 +12,7 @@ import {
   isIconInstance,
 } from "../../utils/iconUtils";
 import { isPresent } from "../../utils/isPresent";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { defaultProps } from "./constants";
 
 export const transformBadge = (
@@ -34,7 +34,7 @@ export const transformBadge = (
   const size = jsxValue(
     bladeInstance.componentProperties.size?.value
   ).toLowerCase();
-  const text = traverseNodeTree(
+  const text = findNode(
     bladeInstance,
     (node) => node.layerName === "badge-text" && node.type === "TEXT"
   );
@@ -42,7 +42,7 @@ export const transformBadge = (
 
   let icon = "";
   if (isIconPresent) {
-    const iconNodeWrapper = traverseNodeTree(
+    const iconNodeWrapper = findNode(
       bladeInstance,
       (bladeNode) => bladeNode.layerName === "badge-icon"
     ) as BladeGroupNode;

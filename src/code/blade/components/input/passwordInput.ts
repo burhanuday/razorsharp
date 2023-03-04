@@ -7,7 +7,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 
 // TODO blade password component has a prop called
@@ -31,7 +31,7 @@ export const transformPasswordInput = (
     },
   };
 
-  const labelTextNode = traverseNodeTree(
+  const labelTextNode = findNode(
     bladeComponentInstance,
     (node) => node.layerName === "Label" && node.type === "TEXT"
   );
@@ -40,7 +40,7 @@ export const transformPasswordInput = (
     type: "string",
   };
 
-  const placeholderTextNode = traverseNodeTree(
+  const placeholderTextNode = findNode(
     bladeComponentInstance,
     (node) => node.layerName === "Placeholder" && node.type === "TEXT"
   );
@@ -50,7 +50,7 @@ export const transformPasswordInput = (
   };
 
   if (isHelpTextPresent) {
-    const helpTextNode = traverseNodeTree(
+    const helpTextNode = findNode(
       bladeComponentInstance,
       (node) => node.layerName === "Help Text" && node.type === "TEXT"
     );
@@ -61,7 +61,7 @@ export const transformPasswordInput = (
   }
 
   if (isMaxCharactersPresent) {
-    const maxCharactersNode = traverseNodeTree(
+    const maxCharactersNode = findNode(
       bladeComponentInstance,
       (node) => node.layerName === "Char Count" && node.type === "TEXT"
     );

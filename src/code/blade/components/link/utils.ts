@@ -3,20 +3,20 @@ import {
   convertFigmaIconNameToBladeIconName,
   isIconInstance,
 } from "../../utils/iconUtils";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 
 export const getLinkIcon = (
   bladeInstance: BladeComponentInstanceNode,
   iconLayerName: "Icon Left" | "Icon Right"
 ) => {
   let icon = "";
-  let iconLeftNode = traverseNodeTree(
+  let iconLeftNode = findNode(
     bladeInstance,
     (bladeNode) => bladeNode.layerName === iconLayerName
   );
 
   if (iconLeftNode !== null) {
-    iconLeftNode = traverseNodeTree(
+    iconLeftNode = findNode(
       iconLeftNode,
       (bladeNode) => bladeNode.layerName === "Icon (change here)"
     );

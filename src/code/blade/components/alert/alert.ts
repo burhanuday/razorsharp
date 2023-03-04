@@ -7,7 +7,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 
 export const transformAlert = (
@@ -27,13 +27,13 @@ export const transformAlert = (
     componentProperties.isFullWidth?.value
   ).toLowerCase();
 
-  const titleNode = traverseNodeTree(
+  const titleNode = findNode(
     bladeInstance,
     (node) => node.layerName === "title" && node.type === "TEXT"
   );
   const title = (titleNode as BladeTextNode)?.characters ?? "";
 
-  const descriptionNode = traverseNodeTree(
+  const descriptionNode = findNode(
     bladeInstance,
     (node) => node.layerName === "message" && node.type === "TEXT"
   );
@@ -76,7 +76,7 @@ export const transformAlert = (
   let actions = "{";
 
   if (isPrimaryActionPresent) {
-    const primaryActionBaseWrapper = traverseNodeTree(
+    const primaryActionBaseWrapper = findNode(
       bladeInstance,
       (node) => node.type === "INSTANCE" && node.layerName === "_CButton"
     ) as BladeComponentInstanceNode;
@@ -89,7 +89,7 @@ export const transformAlert = (
   }
 
   if (isSecondaryActionPresent) {
-    const primaryActionBaseWrapper = traverseNodeTree(
+    const primaryActionBaseWrapper = findNode(
       bladeInstance,
       (node) => node.type === "INSTANCE" && node.layerName === "_CLink"
     ) as BladeComponentInstanceNode;

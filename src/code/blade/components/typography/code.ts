@@ -6,7 +6,7 @@ import {
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { codeDefaultValues } from "./constants";
 
 export const transformCode = (
@@ -21,7 +21,7 @@ export const transformCode = (
     type: "string",
   };
 
-  const textNode = traverseNodeTree(
+  const textNode = findNode(
     bladeInstance,
     (node) => node.layerName === "Text" && node.type === "TEXT"
   );

@@ -7,7 +7,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { traverseNodeTree } from "../../utils/traverseNodeTree";
+import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 
 export const transformOtpInput = (
@@ -28,7 +28,7 @@ export const transformOtpInput = (
     },
   };
 
-  const labelTextNode = traverseNodeTree(
+  const labelTextNode = findNode(
     bladeComponentInstance,
     (node) => node.layerName === "Label" && node.type === "TEXT"
   );
@@ -38,7 +38,7 @@ export const transformOtpInput = (
   };
 
   if (isHelpTextPresent) {
-    const helpTextNode = traverseNodeTree(
+    const helpTextNode = findNode(
       bladeComponentInstance,
       (node) => node.layerName === "Help Text" && node.type === "TEXT"
     );
