@@ -17,7 +17,7 @@ export const transformCode = (
   const componentProperties = bladeInstance.componentProperties;
 
   props["size"] = {
-    value: jsxValue(componentProperties.variant.value).toLowerCase(),
+    value: jsxValue(componentProperties.variant?.value).toLowerCase(),
     type: "string",
   };
 

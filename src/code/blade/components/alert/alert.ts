@@ -15,16 +15,16 @@ export const transformAlert = (
 ): TransformFunctionReturnType => {
   const componentProperties = bladeInstance.componentProperties;
 
-  const intent = jsxValue(componentProperties.Intent.value).toLowerCase();
+  const intent = jsxValue(componentProperties.Intent?.value).toLowerCase();
 
-  const contrast = jsxValue(componentProperties.contrast.value).toLowerCase();
+  const contrast = jsxValue(componentProperties.contrast?.value).toLowerCase();
 
   const isDismissible = jsxValue(
-    componentProperties.isDismissible.value
+    componentProperties.isDismissible?.value
   ).toLowerCase();
 
   const isFullWidth = jsxValue(
-    componentProperties.isFullWidth.value
+    componentProperties.isFullWidth?.value
   ).toLowerCase();
 
   const titleNode = traverseNodeTree(
@@ -67,10 +67,10 @@ export const transformAlert = (
   };
 
   const isPrimaryActionPresent = isPresent(
-    componentProperties.primaryAction.value
+    componentProperties.primaryAction?.value
   );
   const isSecondaryActionPresent = isPresent(
-    componentProperties.secondaryAction.value
+    componentProperties.secondaryAction?.value
   );
 
   let actions = "{";

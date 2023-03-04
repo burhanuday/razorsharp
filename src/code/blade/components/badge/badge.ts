@@ -18,19 +18,21 @@ import { defaultProps } from "./constants";
 export const transformBadge = (
   bladeInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
-  const isIconPresent = isPresent(bladeInstance.componentProperties.Icon.value);
+  const isIconPresent = isPresent(
+    bladeInstance.componentProperties.Icon?.value
+  );
 
   // TODO figure out why this prop does not exist in Blade code
-  const isAllCaps = isPresent(bladeInstance.componentProperties.allCaps.value);
+  const isAllCaps = isPresent(bladeInstance.componentProperties.allCaps?.value);
 
   const contrast = jsxValue(
-    bladeInstance.componentProperties.contrast.value
+    bladeInstance.componentProperties.contrast?.value
   ).toLowerCase();
   const intent = jsxValue(
-    bladeInstance.componentProperties.intent.value
+    bladeInstance.componentProperties.intent?.value
   ).toLowerCase();
   const size = jsxValue(
-    bladeInstance.componentProperties.size.value
+    bladeInstance.componentProperties.size?.value
   ).toLowerCase();
   const text = traverseNodeTree(
     bladeInstance,

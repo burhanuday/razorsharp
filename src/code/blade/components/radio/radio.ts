@@ -20,7 +20,7 @@ export const transformRadio = (
   const children = (labelTextNode as BladeTextNode)?.characters;
 
   const isHelpTextPresent = isPresent(
-    bladeInstance.componentProperties.helpText.value
+    bladeInstance.componentProperties.helpText?.value
   );
 
   let helpText = "";
@@ -33,7 +33,7 @@ export const transformRadio = (
   }
 
   const size = jsxValue(
-    bladeInstance.componentProperties.size.value
+    bladeInstance.componentProperties.size?.value
   ).toLowerCase();
 
   const props: BladeProps = {

@@ -5,6 +5,14 @@ import {
   BladeNode,
 } from "~/code/types/Blade";
 
+const canHaveChildren = (
+  node: BladeNode
+): node is BladeGroupNode | BladeFrameNode | BladeComponentInstanceNode => {
+  return (
+    node.type === "GROUP" || node.type === "FRAME" || node.type === "INSTANCE"
+  );
+};
+
 export const traverseNodeTree = (
   node: BladeNode,
   processNode: (node: BladeNode) => boolean | undefined
@@ -15,14 +23,8 @@ export const traverseNodeTree = (
       return node;
     }
 
-    if (
-      node.type === "FRAME" ||
-      node.type === "INSTANCE" ||
-      node.type === "GROUP"
-    ) {
-      const children = (
-        node as BladeComponentInstanceNode | BladeFrameNode | BladeGroupNode
-      ).children;
+    if (canHaveChildren(node)) {
+      const children = node.children;
 
       for (const child of children) {
         const newNode = traverseNodeTree(child, processNode);

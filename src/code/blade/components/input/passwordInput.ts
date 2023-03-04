@@ -18,15 +18,15 @@ export const transformPasswordInput = (
 ): TransformFunctionReturnType => {
   const componentProperties = bladeComponentInstance.componentProperties;
 
-  const isHelpTextPresent = isPresent(componentProperties.helperText.value);
+  const isHelpTextPresent = isPresent(componentProperties.helperText?.value);
 
   const isMaxCharactersPresent = isPresent(
-    componentProperties.maxCharacters.value
+    componentProperties.maxCharacters?.value
   );
 
   const props: BladeProps = {
     labelPosition: {
-      value: jsxValue(componentProperties.labelPosition.value).toLowerCase(),
+      value: jsxValue(componentProperties.labelPosition?.value).toLowerCase(),
       type: "string",
     },
   };

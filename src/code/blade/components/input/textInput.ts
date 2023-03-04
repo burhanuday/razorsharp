@@ -15,24 +15,24 @@ export const transformTextInput = (
 ): TransformFunctionReturnType => {
   const componentProperties = bladeComponentInstance.componentProperties;
 
-  const isHelpTextPresent = isPresent(componentProperties.helpText.value);
+  const isHelpTextPresent = isPresent(componentProperties.helpText?.value);
 
   // TODO handle icon
-  const isIconPresent = isPresent(componentProperties.icon.value);
+  const isIconPresent = isPresent(componentProperties.icon?.value);
 
   const isMaxCharactersPresent = isPresent(
-    componentProperties.maxCharacters.value
+    componentProperties.maxCharacters?.value
   );
-  const isPrefixPresent = isPresent(componentProperties.prefix.value);
-  const isSuffixPresent = isPresent(componentProperties.prefix.value);
+  const isPrefixPresent = isPresent(componentProperties.prefix?.value);
+  const isSuffixPresent = isPresent(componentProperties.prefix?.value);
 
   const props: BladeProps = {
     labelPosition: {
-      value: jsxValue(componentProperties.labelPosition.value).toLowerCase(),
+      value: jsxValue(componentProperties.labelPosition?.value).toLowerCase(),
       type: "string",
     },
     showClearButton: {
-      value: jsxValue(componentProperties.showClearButton.value),
+      value: jsxValue(componentProperties.showClearButton?.value),
       type: "boolean",
     },
   };

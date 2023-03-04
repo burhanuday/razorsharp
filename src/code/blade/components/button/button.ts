@@ -19,8 +19,8 @@ export const transformButton = (
 ): TransformFunctionReturnType => {
   const componentProperties = bladeComponentInstance.componentProperties;
 
-  const size = componentProperties.size.value;
-  const variant = componentProperties.variant.value;
+  const size = componentProperties.size?.value;
+  const variant = componentProperties.variant?.value;
   let icon = "";
   let iconPosition = "";
 
@@ -67,7 +67,7 @@ export const transformButton = (
       type: "string",
     },
     isFullWidth: {
-      value: jsxValue(componentProperties.isFullWidth.value),
+      value: jsxValue(componentProperties.isFullWidth?.value),
       type: "boolean",
     },
     icon: {

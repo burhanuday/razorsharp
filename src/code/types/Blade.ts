@@ -5,8 +5,14 @@ export interface BladeNode {
   parent: BladeNode | null;
 }
 
+type BladeComponentProperties = {
+  [key: string]:
+    | { type: ComponentPropertyType; value: string | boolean }
+    | undefined;
+};
+
 export interface BladeComponentInstanceNode extends BladeNode {
-  componentProperties: ComponentProperties;
+  componentProperties: BladeComponentProperties;
   type: "INSTANCE";
   children: BladeNode[];
   name: string | null;

@@ -25,7 +25,7 @@ export const transformCheckboxGroup = (
   const label = (labelTextNode as BladeTextNode)?.characters;
 
   const isHelpTextPresent = isPresent(
-    bladeInstance.componentProperties.helpText.value
+    bladeInstance.componentProperties.helpText?.value
   );
 
   let helpText = "";
@@ -41,7 +41,7 @@ export const transformCheckboxGroup = (
   }
 
   const size = jsxValue(
-    bladeInstance.componentProperties.size.value
+    bladeInstance.componentProperties.size?.value
   ).toLowerCase();
 
   const props: BladeProps = {

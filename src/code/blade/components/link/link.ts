@@ -14,7 +14,7 @@ export const transformLink = (
   bladeInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
   const size = jsxValue(
-    bladeInstance.componentProperties.size.value
+    bladeInstance.componentProperties.size?.value
   ).toLowerCase();
 
   const { icon, iconPosition } = getLinkIconProps(bladeInstance);

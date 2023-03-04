@@ -15,15 +15,15 @@ export const transformOtpInput = (
 ): TransformFunctionReturnType => {
   const componentProperties = bladeComponentInstance.componentProperties;
 
-  const isHelpTextPresent = isPresent(componentProperties.helperText.value);
+  const isHelpTextPresent = isPresent(componentProperties.helperText?.value);
 
   const props: BladeProps = {
     labelPosition: {
-      value: jsxValue(componentProperties.labelPosition.value).toLowerCase(),
+      value: jsxValue(componentProperties.labelPosition?.value).toLowerCase(),
       type: "string",
     },
     otpLength: {
-      value: jsxValue(componentProperties.numberOfFields.value).toLowerCase(),
+      value: jsxValue(componentProperties.numberOfFields?.value).toLowerCase(),
       type: "number",
     },
   };

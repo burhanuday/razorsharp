@@ -19,16 +19,16 @@ export const transformSpinner = (
   const componentProperties = bladeInstance.componentProperties;
 
   props["size"] = {
-    value: jsxValue(componentProperties.size.value).toLowerCase(),
+    value: jsxValue(componentProperties.size?.value).toLowerCase(),
     type: "string",
   };
 
   props["contrast"] = {
-    value: jsxValue(componentProperties.contrast.value).toLowerCase(),
+    value: jsxValue(componentProperties.contrast?.value).toLowerCase(),
     type: "string",
   };
 
-  const isLabelPresent = isPresent(componentProperties.label.value);
+  const isLabelPresent = isPresent(componentProperties.label?.value);
   if (isLabelPresent) {
     const labelTextNode = traverseNodeTree(
       bladeInstance,

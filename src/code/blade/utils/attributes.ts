@@ -3,7 +3,8 @@ import { indent } from "./indent";
 import { isJSXValueEmpty } from "./isJSXValueEmpty";
 import { newLine } from "./newLine";
 
-export const jsxValue = (value: string | boolean): string => {
+export const jsxValue = (value: string | boolean | undefined): string => {
+  if (typeof value === "undefined") return "";
   if (value === "True" || value === true) return "true";
   if (value === "False" || value === false) return "false";
 
