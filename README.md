@@ -18,7 +18,7 @@
 | TextArea      | ✅ Done                      |
 | PasswordInput | ✅ Done                      |
 | Code          | ✅ Done                      |
-| OTPInput      |                              |
+| OTPInput      | ✅ Done                      |
 | Counter       |                              |
 | IconButton    |                              |
 | Indicator     |                              |

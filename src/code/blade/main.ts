@@ -17,6 +17,7 @@ import {
   transformCode,
 } from "./components/typography";
 import {
+  transformOtpInput,
   transformPasswordInput,
   transformTextArea,
   transformTextInput,
@@ -35,10 +36,6 @@ import { transformSpinner } from "./components/spinner";
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
-  // console.log(
-  //   "🚀 ~ file: main.ts:34 ~ bladeComponentInstance:",
-  //   bladeComponentInstance
-  // );
   // check if component instance is an icon
   const isIcon = isIconInstance(bladeComponentInstance);
   if (isIcon) return transformIcon(bladeComponentInstance);
@@ -77,6 +74,8 @@ const generateBladeComponentInstanceCode = (
       return transformTextArea(bladeComponentInstance);
     case "Password Input":
       return transformPasswordInput(bladeComponentInstance);
+    case "OTP Input":
+      return transformOtpInput(bladeComponentInstance);
     default:
       return { component: "" };
   }
