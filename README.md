@@ -15,7 +15,7 @@
 | Alert         | ✅ Done                      |
 | TextInput     | ✅ Done                      |
 | Spinner       | ✅ Done                      |
-| TextArea      |                              |
+| TextArea      | ✅ Done                      |
 | PasswordInput |                              |
 | Code          | ✅ Done                      |
 | OTPInput      |                              |
