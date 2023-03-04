@@ -23,7 +23,7 @@ export const transformBadge = (
   );
 
   // TODO figure out why this prop does not exist in Blade code
-  const isAllCaps = isPresent(bladeInstance.componentProperties.allCaps?.value);
+  // const isAllCaps = isPresent(bladeInstance.componentProperties.allCaps?.value);
 
   const contrast = jsxValue(
     bladeInstance.componentProperties.contrast?.value

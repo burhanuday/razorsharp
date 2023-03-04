@@ -1,6 +1,5 @@
 import {
   BladeComponentInstanceNode,
-  BladeGroupNode,
   BladeProps,
   BladeTextNode,
 } from "~/code/types/Blade";

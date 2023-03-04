@@ -18,7 +18,7 @@ export const transformTextInput = (
   const isHelpTextPresent = isPresent(componentProperties.helpText?.value);
 
   // TODO handle icon
-  const isIconPresent = isPresent(componentProperties.icon?.value);
+  // const isIconPresent = isPresent(componentProperties.icon?.value);
 
   const isMaxCharactersPresent = isPresent(
     componentProperties.maxCharacters?.value

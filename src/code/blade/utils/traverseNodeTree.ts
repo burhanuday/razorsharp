@@ -15,7 +15,7 @@ const canHaveChildren = (
 
 export const traverseNodeTree = (
   node: BladeNode,
-  processNode: (node: BladeNode) => boolean | undefined
+  processNode: (node: BladeNode) => boolean
 ): null | BladeNode => {
   if (node) {
     const shouldStopTraversal = processNode(node);
