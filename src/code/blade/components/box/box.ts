@@ -7,7 +7,10 @@ import {
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { component } from "../../utils/component";
 import { defaultValues, LAYOUT_MODES } from "./constants";
-import { getFlexAlignmentFromAxisAlignment } from "./utils";
+import {
+  getFlexAlignmentFromAxisAlignment,
+  getTokenFromSpacingValue,
+} from "./utils";
 
 export const transformFrameOrGroup = (
   bladeFrame: BladeFrameNode | BladeGroupNode,
@@ -51,7 +54,7 @@ export const transformFrameOrGroup = (
     };
 
     props["gap"] = {
-      value: `${bladeFrame.itemSpacing}px`,
+      value: getTokenFromSpacingValue(bladeFrame.itemSpacing),
       type: "string",
     };
 
