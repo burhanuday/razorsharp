@@ -20,7 +20,7 @@
 | Code          | ✅ Done                      |
 | OTPInput      | ✅ Done                      |
 | Counter       | ✅ Done                      |
-| IconButton    |                              |
+| IconButton    | ✅ Done                      |
 | Indicator     |                              |
 | Card          |                              |
 | ProgressBar   |                              |
