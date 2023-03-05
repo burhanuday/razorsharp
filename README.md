@@ -21,7 +21,7 @@
 | OTPInput      | ✅ Done                      |
 | Counter       | ✅ Done                      |
 | IconButton    | ✅ Done                      |
-| Indicator     |                              |
+| Indicator     | ✅ Done                      |
 | Card          |                              |
 | ProgressBar   |                              |
 | List          |                              |

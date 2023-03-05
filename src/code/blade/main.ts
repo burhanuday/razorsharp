@@ -34,6 +34,7 @@ import { transformAlert } from "./components/alert";
 import { transformSpinner } from "./components/spinner";
 import { transformCounter } from "./components/counter";
 import { transformIconButton } from "./components/iconButton";
+import { transformIndicator } from "./components/indicator";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -82,6 +83,8 @@ const generateBladeComponentInstanceCode = (
       return transformCounter(bladeComponentInstance);
     case "IconButton":
       return transformIconButton(bladeComponentInstance);
+    case "Indicators":
+      return transformIndicator(bladeComponentInstance);
     default:
       return { component: "" };
   }
