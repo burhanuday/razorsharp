@@ -37,6 +37,8 @@ export const transformBadge = (
 
   const children = findTextByLayerName(bladeInstance, "badge-text") ?? "";
 
+  // TODO figure out why figma structure for Badge icon is
+  // different from the way it is done in other places
   let icon = "";
   if (isIconPresent) {
     const iconNodeWrapper = findNode(
