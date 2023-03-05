@@ -2,14 +2,11 @@ import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
-import {
-  convertFigmaIconNameToBladeIconName,
-  isIconInstance,
-} from "../../utils/iconUtils";
 import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 import { transformButtonVariant } from "./utils";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { findIconByLayerName } from "../../utils/findIconByLayerName";
 
 export const transformButton = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -28,13 +25,8 @@ export const transformButton = (
     (bladeNode) => bladeNode.layerName === "Icon Left"
   );
 
-  if (
-    iconLeftNode !== null &&
-    isIconInstance(iconLeftNode as BladeComponentInstanceNode)
-  ) {
-    icon = convertFigmaIconNameToBladeIconName(
-      (iconLeftNode as BladeComponentInstanceNode)?.name || "unidentified-icon"
-    );
+  if (iconLeftNode) {
+    icon = findIconByLayerName(iconLeftNode, "Icon (change here)") ?? "";
     iconPosition = "left";
   }
 
@@ -43,13 +35,8 @@ export const transformButton = (
     (bladeNode) => bladeNode.layerName === "Icon Right"
   );
 
-  if (
-    iconRightNode !== null &&
-    isIconInstance(iconRightNode as BladeComponentInstanceNode)
-  ) {
-    icon = convertFigmaIconNameToBladeIconName(
-      (iconRightNode as BladeComponentInstanceNode)?.name || "unidentified-icon"
-    );
+  if (iconRightNode) {
+    icon = findIconByLayerName(iconRightNode, "Icon (change here)") ?? "";
     iconPosition = "right";
   }
 
