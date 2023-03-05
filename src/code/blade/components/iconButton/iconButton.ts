@@ -11,7 +11,7 @@ export const transformIconButton = (
   const componentProperties = bladeComponentInstance.componentProperties;
 
   const props: BladeProps = {
-    intent: {
+    icon: {
       value:
         findIconByLayerName(bladeComponentInstance, "Icon (change here)") ?? "",
       type: "instance",
