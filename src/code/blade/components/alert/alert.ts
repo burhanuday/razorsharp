@@ -9,6 +9,7 @@ import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
 import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
+import { findTextByLayerName } from "../../utils/findTextByLayerName";
 
 export const transformAlert = (
   bladeInstance: BladeComponentInstanceNode
@@ -27,17 +28,8 @@ export const transformAlert = (
     componentProperties.isFullWidth?.value
   ).toLowerCase();
 
-  const titleNode = findNode(
-    bladeInstance,
-    (node) => node.layerName === "title" && node.type === "TEXT"
-  );
-  const title = (titleNode as BladeTextNode)?.characters ?? "";
-
-  const descriptionNode = findNode(
-    bladeInstance,
-    (node) => node.layerName === "message" && node.type === "TEXT"
-  );
-  const description = (descriptionNode as BladeTextNode)?.characters ?? "";
+  const title = findTextByLayerName(bladeInstance, "title") ?? "";
+  const description = findTextByLayerName(bladeInstance, "message") ?? "";
 
   const props: BladeProps = {
     intent: {

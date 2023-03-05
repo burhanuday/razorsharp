@@ -1,12 +1,8 @@
-import {
-  BladeComponentInstanceNode,
-  BladeProps,
-  BladeTextNode,
-} from "~/code/types/Blade";
+import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
-import { findNode } from "../../utils/findNode";
+import { findTextByLayerName } from "../../utils/findTextByLayerName";
 import { headingDefaultValues } from "./constants";
 
 export const transformHeading = (
@@ -36,11 +32,7 @@ export const transformHeading = (
     type: "string",
   };
 
-  const textNode = findNode(
-    bladeInstance,
-    (node) => node.layerName === "Text" && node.type === "TEXT"
-  );
-  const children = (textNode as BladeTextNode)?.characters;
+  const children = findTextByLayerName(bladeInstance, "Text") ?? "";
 
   return {
     component: component("Heading", {

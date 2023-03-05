@@ -1,23 +1,15 @@
-import {
-  BladeComponentInstanceNode,
-  BladeProps,
-  BladeTextNode,
-} from "~/code/types/Blade";
+import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
+import { findTextByLayerName } from "../../utils/findTextByLayerName";
 
 export const transformRadio = (
   bladeInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
-  const labelTextNode = findNode(
-    bladeInstance,
-    (node) => node.layerName === "Label" && node.type === "TEXT"
-  );
-  const children = (labelTextNode as BladeTextNode)?.characters;
+  const children = findTextByLayerName(bladeInstance, "Label") ?? "";
 
   const isHelpTextPresent = isPresent(
     bladeInstance.componentProperties.helpText?.value
@@ -25,11 +17,7 @@ export const transformRadio = (
 
   let helpText = "";
   if (isHelpTextPresent) {
-    const helpTextNode = findNode(
-      bladeInstance,
-      (node) => node.layerName === "Help Text" && node.type === "TEXT"
-    );
-    helpText = (helpTextNode as BladeTextNode)?.characters;
+    helpText = findTextByLayerName(bladeInstance, "Help Text") ?? "";
   }
 
   const size = jsxValue(

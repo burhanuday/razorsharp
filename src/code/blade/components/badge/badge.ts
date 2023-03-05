@@ -2,7 +2,6 @@ import {
   BladeComponentInstanceNode,
   BladeGroupNode,
   BladeProps,
-  BladeTextNode,
 } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
@@ -14,6 +13,7 @@ import {
 import { isPresent } from "../../utils/isPresent";
 import { findNode } from "../../utils/findNode";
 import { defaultProps } from "./constants";
+import { findTextByLayerName } from "../../utils/findTextByLayerName";
 
 export const transformBadge = (
   bladeInstance: BladeComponentInstanceNode
@@ -34,11 +34,8 @@ export const transformBadge = (
   const size = jsxValue(
     bladeInstance.componentProperties.size?.value
   ).toLowerCase();
-  const text = findNode(
-    bladeInstance,
-    (node) => node.layerName === "badge-text" && node.type === "TEXT"
-  );
-  const children = (text as BladeTextNode)?.characters;
+
+  const children = findTextByLayerName(bladeInstance, "badge-text") ?? "";
 
   let icon = "";
   if (isIconPresent) {

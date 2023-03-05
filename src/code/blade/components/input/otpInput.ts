@@ -1,14 +1,10 @@
-import {
-  BladeComponentInstanceNode,
-  BladeProps,
-  BladeTextNode,
-} from "~/code/types/Blade";
+import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
+import { findTextByLayerName } from "../../utils/findTextByLayerName";
 
 export const transformOtpInput = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -28,22 +24,14 @@ export const transformOtpInput = (
     },
   };
 
-  const labelTextNode = findNode(
-    bladeComponentInstance,
-    (node) => node.layerName === "Label" && node.type === "TEXT"
-  );
   props["label"] = {
-    value: (labelTextNode as BladeTextNode)?.characters,
+    value: findTextByLayerName(bladeComponentInstance, "Label") ?? "",
     type: "string",
   };
 
   if (isHelpTextPresent) {
-    const helpTextNode = findNode(
-      bladeComponentInstance,
-      (node) => node.layerName === "Help Text" && node.type === "TEXT"
-    );
     props["helpText"] = {
-      value: (helpTextNode as BladeTextNode)?.characters,
+      value: findTextByLayerName(bladeComponentInstance, "Help Text") ?? "",
       type: "string",
     };
   }

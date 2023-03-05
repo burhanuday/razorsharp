@@ -1,8 +1,4 @@
-import {
-  BladeComponentInstanceNode,
-  BladeProps,
-  BladeTextNode,
-} from "~/code/types/Blade";
+import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
@@ -13,6 +9,7 @@ import {
 import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 import { transformButtonVariant } from "./utils";
+import { findTextByLayerName } from "../../utils/findTextByLayerName";
 
 export const transformButton = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -24,11 +21,7 @@ export const transformButton = (
   let icon = "";
   let iconPosition = "";
 
-  const labelTextNode = findNode(
-    bladeComponentInstance,
-    (node) => node.layerName === "Text" && node.type === "TEXT"
-  );
-  const children = (labelTextNode as BladeTextNode)?.characters;
+  const children = findTextByLayerName(bladeComponentInstance, "Text") ?? "";
 
   const iconLeftNode = findNode(
     bladeComponentInstance,

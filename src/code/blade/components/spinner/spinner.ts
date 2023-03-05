@@ -1,14 +1,10 @@
-import {
-  BladeComponentInstanceNode,
-  BladeProps,
-  BladeTextNode,
-} from "~/code/types/Blade";
+import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
+import { findTextByLayerName } from "../../utils/findTextByLayerName";
 
 export const transformSpinner = (
   bladeInstance: BladeComponentInstanceNode
@@ -29,12 +25,8 @@ export const transformSpinner = (
 
   const isLabelPresent = isPresent(componentProperties.label?.value);
   if (isLabelPresent) {
-    const labelTextNode = findNode(
-      bladeInstance,
-      (node) => node.type === "TEXT" && node.layerName === "Label"
-    );
     props["label"] = {
-      value: (labelTextNode as BladeTextNode)?.characters,
+      value: findTextByLayerName(bladeInstance, "Label") ?? "",
       type: "string",
     };
 
