@@ -32,6 +32,7 @@ import {
 import { transformRadio, transformRadioGroup } from "./components/radio";
 import { transformAlert } from "./components/alert";
 import { transformSpinner } from "./components/spinner";
+import { transformCounter } from "./components/counter";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -76,6 +77,8 @@ const generateBladeComponentInstanceCode = (
       return transformPasswordInput(bladeComponentInstance);
     case "OTP Input":
       return transformOtpInput(bladeComponentInstance);
+    case "Counter":
+      return transformCounter(bladeComponentInstance);
     default:
       return { component: "" };
   }

@@ -19,7 +19,7 @@
 | PasswordInput | ✅ Done                      |
 | Code          | ✅ Done                      |
 | OTPInput      | ✅ Done                      |
-| Counter       |                              |
+| Counter       | ✅ Done                      |
 | IconButton    |                              |
 | Indicator     |                              |
 | Card          |                              |
