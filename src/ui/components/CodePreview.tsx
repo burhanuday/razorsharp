@@ -4,13 +4,12 @@ import "./prism.css";
 
 interface CodePreviewProps {
   content: string;
-  language?: string;
 }
 
-export function CodePreview({ content, language = "jsx" }: CodePreviewProps) {
+export function CodePreview({ content }: CodePreviewProps) {
   const highlighted = useMemo(
     () => Prism.highlight(content, Prism.languages["jsx"], "jsx"),
-    [content, language]
+    [content]
   );
 
   return (
