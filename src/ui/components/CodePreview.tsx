@@ -7,10 +7,7 @@ interface CodePreviewProps {
   language?: string;
 }
 
-export function CodePreview({
-  content,
-  language = "jsx",
-}: CodePreviewProps): JSX.Element {
+export function CodePreview({ content, language = "jsx" }: CodePreviewProps) {
   const highlighted = useMemo(
     () => Prism.highlight(content, Prism.languages["jsx"], "jsx"),
     [content, language]
