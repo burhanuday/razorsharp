@@ -35,6 +35,7 @@ import { transformSpinner } from "./components/spinner";
 import { transformCounter } from "./components/counter";
 import { transformIconButton } from "./components/iconButton";
 import { transformIndicator } from "./components/indicator";
+import { transformProgressBar } from "./components/progressBar";
 
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -85,6 +86,8 @@ const generateBladeComponentInstanceCode = (
       return transformIconButton(bladeComponentInstance);
     case "Indicators":
       return transformIndicator(bladeComponentInstance);
+    case "ProgressBar":
+      return transformProgressBar(bladeComponentInstance);
     default:
       return { component: "" };
   }

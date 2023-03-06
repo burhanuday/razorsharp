@@ -23,7 +23,7 @@
 | IconButton    | ✅ Done                      |
 | Indicator     | ✅ Done                      |
 | Card          |                              |
-| ProgressBar   |                              |
+| ProgressBar   | ✅ Done                      |
 | List          |                              |
 | SelectInput   |                              |
 | Dropdown      |                              |
