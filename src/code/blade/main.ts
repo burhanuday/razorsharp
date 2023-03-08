@@ -38,6 +38,18 @@ import { transformIconButton } from "./components/iconButton";
 import { transformIndicator } from "./components/indicator";
 import { transformProgressBar } from "./components/progressBar";
 
+const getUnknownComponentOutput = (
+  component: BladeComponentInstanceNode
+): TransformFunctionReturnType => {
+  return {
+    component: `
+{/* 
+  ${component.name} is either not supported yet or not a part of Blade.
+  <${component.name} /> 
+*/}`,
+  };
+};
+
 const generateBladeComponentInstanceCode = (
   bladeComponentInstance: BladeComponentInstanceNode
 ): TransformFunctionReturnType => {
@@ -92,7 +104,7 @@ const generateBladeComponentInstanceCode = (
     case "Select Input":
       return transformSelectInput(bladeComponentInstance);
     default:
-      return { component: "" };
+      return getUnknownComponentOutput(bladeComponentInstance);
   }
 };
 
