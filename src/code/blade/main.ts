@@ -19,6 +19,7 @@ import {
 import {
   transformOtpInput,
   transformPasswordInput,
+  transformSelectInput,
   transformTextArea,
   transformTextInput,
 } from "./components/input";
@@ -88,6 +89,8 @@ const generateBladeComponentInstanceCode = (
       return transformIndicator(bladeComponentInstance);
     case "ProgressBar":
       return transformProgressBar(bladeComponentInstance);
+    case "Select Input":
+      return transformSelectInput(bladeComponentInstance);
     default:
       return { component: "" };
   }
