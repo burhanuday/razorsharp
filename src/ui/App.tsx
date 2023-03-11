@@ -1,8 +1,7 @@
 import { useState, useEffect } from "preact/hooks";
-import { CodePreview } from "./components/CodePreview";
+import { CodePreview } from "./components/CodePreview/CodePreview";
 import { ToastProvider } from "./providers/Toast";
 import { ToastManager } from "./components/ToastManager/ToastManager";
-import { Actions } from "./components/Actions";
 import { Message, Result } from "~/types/MessageTypes";
 
 const emptyPlaceholder: Result = {
@@ -32,13 +31,10 @@ export function App() {
 
   return (
     <ToastProvider>
-      <div>
-        <Actions code={code.component} />
-        <section>
-          <CodePreview content={code.imports} />
-          <CodePreview content={code.component} />
-        </section>
-      </div>
+      <section>
+        <CodePreview content={code.imports} />
+        <CodePreview content={code.component} />
+      </section>
       <ToastManager />
     </ToastProvider>
   );
