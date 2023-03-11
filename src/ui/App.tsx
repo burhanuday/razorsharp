@@ -29,19 +29,12 @@ export function App() {
   }, []);
 
   return (
-    <div className="container">
-      <nav>
-        <ul>
-          <li></li>
-        </ul>
-        <ul>
-          <li>
-            <a href="#" role="button" onClick={handleCopyClicked}>
-              Copy
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <div>
+      <section className="section__actions">
+        <button className="button button-primary" onClick={handleCopyClicked}>
+          Copy
+        </button>
+      </section>
       <section>
         <CodePreview content={code} />
       </section>
