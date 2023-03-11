@@ -10,6 +10,7 @@ import { isPresent } from "../../utils/isPresent";
 import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { BLADE_IMPORT_PATH } from "../../constants/paths";
 
 export const transformAlert = (
   bladeInstance: BladeComponentInstanceNode
@@ -106,7 +107,7 @@ export const transformAlert = (
       defaultValues: defaultValues,
     }),
     imports: {
-      "@razorpay/blade/components": ["Alert"],
+      [BLADE_IMPORT_PATH]: ["Alert"],
     },
   };
 };

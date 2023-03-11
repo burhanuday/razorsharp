@@ -19,4 +19,6 @@ export const mergeImports = (oldImports: Imports, newImports: Imports) => {
       oldImports[importPath] = importName;
     }
   }
+
+  return oldImports;
 };

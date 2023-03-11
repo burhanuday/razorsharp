@@ -29,7 +29,7 @@ export const generateBladeCode = ({
           bladeNode as BladeComponentInstanceNode
         );
         componentCode += component;
-        mergeImports(allImports, imports ?? {});
+        allImports = mergeImports(allImports, imports ?? {});
         break;
       }
       case "FRAME": {
@@ -37,7 +37,7 @@ export const generateBladeCode = ({
           bladeNode as BladeFrameNode
         );
         componentCode += component;
-        mergeImports(allImports, imports ?? {});
+        allImports = mergeImports(allImports, imports ?? {});
         break;
       }
       case "TEXT":
@@ -51,7 +51,7 @@ export const generateBladeCode = ({
           bladeNode as BladeGroupNode
         );
         componentCode += component;
-        mergeImports(allImports, imports ?? {});
+        allImports = mergeImports(allImports, imports ?? {});
       }
 
       default:

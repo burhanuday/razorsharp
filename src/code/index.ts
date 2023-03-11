@@ -28,8 +28,8 @@ const run = () => {
 
   figma.ui.postMessage({
     type: "result",
-    component: component,
-    imports: generateImportsCode(imports ?? {}),
+    component: component.trim(),
+    imports: generateImportsCode(imports ?? {}).trim(),
   });
 };
 
