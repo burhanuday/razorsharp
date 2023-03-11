@@ -13,7 +13,7 @@ export function CodePreview({ content }: CodePreviewProps) {
   );
 
   return (
-    <pre>
+    <pre className="language-jsx">
       <code
         className="language-jsx"
         dangerouslySetInnerHTML={{ __html: highlighted }}

@@ -2,6 +2,9 @@ import { generateBladeCode } from "./blade/main";
 import { convertIntoBladeNodes } from "./figmaUtils/convertIntoNodes";
 import { BladeNode } from "./types/Blade";
 
+// TODO
+// Optimise for case when input hasnt changed
+
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__, { width: 450, height: 550 });
 
@@ -28,13 +31,14 @@ const run = () => {
   });
 };
 
-// TODO
-// Optimise rendering in React when inputs haven't
-// changed
 figma.on("selectionchange", () => {
   run();
 });
 
-figma.ui.onmessage = (msg) => {
+figma.on("documentchange", () => {
   run();
-};
+});
+
+// figma.ui.onmessage = (msg) => {
+//   run();
+// };
