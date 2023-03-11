@@ -1,15 +1,13 @@
 import { useState, useEffect } from "preact/hooks";
-import copy from "clipboard-copy";
 import { CodePreview } from "./components/CodePreview";
+import { ToastProvider } from "./providers/Toast";
+import { ToastManager } from "./components/ToastManager/ToastManager";
+import { Actions } from "./components/Actions";
 
 const emptyPlaceholder = "Empty";
 
 export function App() {
   const [code, setCode] = useState<string>(emptyPlaceholder);
-
-  const handleCopyClicked = () => {
-    copy(code);
-  };
 
   useEffect(() => {
     onmessage = (event) => {
@@ -29,15 +27,14 @@ export function App() {
   }, []);
 
   return (
-    <div>
-      <section className="section__actions">
-        <button className="button button-primary" onClick={handleCopyClicked}>
-          Copy
-        </button>
-      </section>
-      <section>
-        <CodePreview content={code} />
-      </section>
-    </div>
+    <ToastProvider>
+      <div>
+        <Actions code={code} />
+        <section>
+          <CodePreview content={code} />
+        </section>
+      </div>
+      <ToastManager />
+    </ToastProvider>
   );
 }
