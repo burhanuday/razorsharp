@@ -30,9 +30,6 @@ export function App() {
 
   return (
     <div className="container">
-      <section>
-        <CodePreview content={code} />
-      </section>
       <nav>
         <ul>
           <li></li>
@@ -45,6 +42,9 @@ export function App() {
           </li>
         </ul>
       </nav>
+      <section>
+        <CodePreview content={code} />
+      </section>
     </div>
   );
 }

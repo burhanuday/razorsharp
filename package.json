@@ -23,7 +23,6 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "@picocss/pico": "^1.5.7",
     "clipboard-copy": "^4.0.1",
     "preact": "^10.13.0"
   }
