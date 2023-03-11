@@ -12,6 +12,7 @@ import {
   generateTextNodeCode,
   generateGroupNodeCode,
 } from "./components";
+import { mergeImports } from "./utils/imports";
 
 export const generateBladeCode = ({
   bladeNodes,
@@ -19,36 +20,44 @@ export const generateBladeCode = ({
   bladeNodes: BladeNode[];
 }): TransformFunctionReturnType => {
   let componentCode = "";
+  let allImports = {};
 
   bladeNodes.forEach((bladeNode) => {
     switch (bladeNode.type) {
-      case "INSTANCE":
-        componentCode += generateBladeComponentInstanceCode(
+      case "INSTANCE": {
+        const { component, imports } = generateBladeComponentInstanceCode(
           bladeNode as BladeComponentInstanceNode
-        ).component;
+        );
+        componentCode += component;
+        mergeImports(allImports, imports ?? {});
         break;
-
-      case "FRAME":
-        componentCode += generateBladeFrameCode(
+      }
+      case "FRAME": {
+        const { component, imports } = generateBladeFrameCode(
           bladeNode as BladeFrameNode
-        ).component;
+        );
+        componentCode += component;
+        mergeImports(allImports, imports ?? {});
         break;
-
+      }
       case "TEXT":
         componentCode += generateTextNodeCode(
           bladeNode as BladeTextNode
         ).component;
         break;
 
-      case "GROUP":
-        componentCode += generateGroupNodeCode(
+      case "GROUP": {
+        const { component, imports } = generateGroupNodeCode(
           bladeNode as BladeGroupNode
-        ).component;
+        );
+        componentCode += component;
+        mergeImports(allImports, imports ?? {});
+      }
 
       default:
         break;
     }
   });
 
-  return { component: componentCode };
+  return { component: componentCode, imports: allImports };
 };

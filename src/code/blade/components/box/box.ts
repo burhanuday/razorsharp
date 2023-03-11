@@ -1,10 +1,6 @@
-import {
-  BladeFrameNode,
-  BladeGroupNode,
-  BladeNode,
-  BladeProps,
-} from "~/code/types/Blade";
+import { BladeFrameNode, BladeGroupNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
+import { generateBladeCode } from "../../main";
 import { component } from "../../utils/component";
 import { defaultValues, LAYOUT_MODES } from "./constants";
 import {
@@ -13,12 +9,7 @@ import {
 } from "./utils";
 
 export const transformFrameOrGroup = (
-  bladeFrame: BladeFrameNode | BladeGroupNode,
-  convertChildrenToCode: ({
-    bladeNodes,
-  }: {
-    bladeNodes: BladeNode[];
-  }) => TransformFunctionReturnType
+  bladeFrame: BladeFrameNode | BladeGroupNode
 ): TransformFunctionReturnType => {
   const props: BladeProps = {};
 
@@ -27,19 +18,20 @@ export const transformFrameOrGroup = (
   // for groups, use relative transform matrix to find the
   // distances between elements in a group
   if (bladeFrame.type === "GROUP") {
-    let children = "";
+    let children: TransformFunctionReturnType = { component: "", imports: {} };
     if (bladeFrame.children && bladeFrame.children.length > 0) {
-      children = convertChildrenToCode({
+      children = generateBladeCode({
         bladeNodes: bladeFrame.children,
-      }).component;
+      });
     }
 
     return {
       component: component("Box", {
         props,
         defaultValues,
-        children,
+        children: children.component,
       }),
+      imports: children.imports,
     };
   }
 
@@ -87,18 +79,19 @@ export const transformFrameOrGroup = (
     props["alignItems"] = { value: alignItems, type: "string" };
   }
 
-  let children = "";
+  let children: TransformFunctionReturnType = { component: "", imports: {} };
   if (bladeFrame.children && bladeFrame.children.length > 0) {
-    children = convertChildrenToCode({
+    children = generateBladeCode({
       bladeNodes: bladeFrame.children,
-    }).component;
+    });
   }
 
   return {
     component: component("Box", {
       props,
       defaultValues,
-      children,
+      children: children.component,
     }),
+    imports: children.imports,
   };
 };

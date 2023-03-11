@@ -105,5 +105,8 @@ export const transformAlert = (
       props,
       defaultValues: defaultValues,
     }),
+    imports: {
+      "@razorpay/blade/components": ["Alert"],
+    },
   };
 };

@@ -3,14 +3,18 @@ import { CodePreview } from "./components/CodePreview";
 import { ToastProvider } from "./providers/Toast";
 import { ToastManager } from "./components/ToastManager/ToastManager";
 import { Actions } from "./components/Actions";
+import { Message, Result } from "~/types/MessageTypes";
 
-const emptyPlaceholder = "Empty";
+const emptyPlaceholder: Result = {
+  component: "Empty",
+  imports: "Empty",
+};
 
 export function App() {
-  const [code, setCode] = useState<string>(emptyPlaceholder);
+  const [code, setCode] = useState<Result>(emptyPlaceholder);
 
   useEffect(() => {
-    onmessage = (event) => {
+    onmessage = (event: Message) => {
       if (!event.data.pluginMessage) {
         return;
       }
@@ -20,8 +24,8 @@ export function App() {
       }
 
       if (event.data.pluginMessage.type === "result") {
-        const codeData = event.data.pluginMessage.data;
-        setCode(codeData.trim());
+        const { component, imports } = event.data.pluginMessage;
+        setCode({ component, imports });
       }
     };
   }, []);
@@ -29,9 +33,10 @@ export function App() {
   return (
     <ToastProvider>
       <div>
-        <Actions code={code} />
+        <Actions code={code.component} />
         <section>
-          <CodePreview content={code} />
+          <CodePreview content={code.imports} />
+          <CodePreview content={code.component} />
         </section>
       </div>
       <ToastManager />

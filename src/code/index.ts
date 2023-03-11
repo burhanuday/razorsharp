@@ -1,4 +1,5 @@
 import { generateBladeCode } from "./blade/main";
+import { generateImportsCode } from "./blade/utils/imports";
 import { convertIntoBladeNodes } from "./figmaUtils/convertIntoNodes";
 import { BladeNode } from "./types/Blade";
 
@@ -21,13 +22,14 @@ const run = () => {
     null
   );
 
-  const result = generateBladeCode({
+  const { component, imports } = generateBladeCode({
     bladeNodes: convertedSelection,
-  }).component;
+  });
 
   figma.ui.postMessage({
     type: "result",
-    data: result,
+    component: component,
+    imports: generateImportsCode(imports ?? {}),
   });
 };
 

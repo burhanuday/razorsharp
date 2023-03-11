@@ -5,7 +5,6 @@ import {
   BladeTextNode,
 } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
-import { generateBladeCode } from "../main";
 import { isIconInstance } from "../utils/iconUtils";
 import { transformAlert } from "./alert";
 import { transformBadge } from "./badge";
@@ -108,7 +107,7 @@ export const generateBladeComponentInstanceCode = (
 export const generateBladeFrameCode = (
   bladeNode: BladeFrameNode
 ): TransformFunctionReturnType => {
-  return transformFrameOrGroup(bladeNode, generateBladeCode);
+  return transformFrameOrGroup(bladeNode);
 };
 
 export const generateTextNodeCode = (
@@ -120,5 +119,5 @@ export const generateTextNodeCode = (
 export const generateGroupNodeCode = (
   bladeNode: BladeGroupNode
 ): TransformFunctionReturnType => {
-  return transformFrameOrGroup(bladeNode, generateBladeCode);
+  return transformFrameOrGroup(bladeNode);
 };
