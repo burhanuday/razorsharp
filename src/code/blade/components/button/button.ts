@@ -7,6 +7,7 @@ import { defaultValues } from "./constants";
 import { transformButtonVariant } from "./utils";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
 import { findIconByLayerName } from "../../utils/findIconByLayerName";
+import { bladeImports } from "../../utils/imports";
 
 export const transformButton = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -66,5 +67,6 @@ export const transformButton = (
       defaultValues,
       children,
     }),
+    imports: bladeImports(["Button", icon]),
   };
 };

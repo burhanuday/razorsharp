@@ -14,6 +14,7 @@ import { isPresent } from "../../utils/isPresent";
 import { findNode } from "../../utils/findNode";
 import { defaultProps } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 
 export const transformBadge = (
   bladeInstance: BladeComponentInstanceNode
@@ -78,5 +79,6 @@ export const transformBadge = (
       defaultValues: defaultProps,
       children,
     }),
+    imports: bladeImports([icon, "Badge"]),
   };
 };

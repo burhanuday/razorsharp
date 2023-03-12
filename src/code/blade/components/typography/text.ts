@@ -3,6 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 import { textDefaultValues } from "./constants";
 
 export const transformText = (
@@ -45,5 +46,6 @@ export const transformText = (
       defaultValues: textDefaultValues,
       children,
     }),
+    imports: bladeImports(["Text"]),
   };
 };

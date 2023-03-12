@@ -5,6 +5,7 @@ import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
 import { defaultValues } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 
 export const transformOtpInput = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -36,5 +37,8 @@ export const transformOtpInput = (
     };
   }
 
-  return { component: component("OTPInput", { props, defaultValues }) };
+  return {
+    component: component("OTPInput", { props, defaultValues }),
+    imports: bladeImports(["OTPInput"]),
+  };
 };

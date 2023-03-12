@@ -11,6 +11,7 @@ import { isPresent } from "../../utils/isPresent";
 import { findNode } from "../../utils/findNode";
 import { transformRadio } from "./radio";
 import { defaultValues } from "./constants";
+import { bladeImports, mergeImports } from "../../utils/imports";
 
 export const transformRadioGroup = (
   bladeInstance: BladeComponentInstanceNode
@@ -64,9 +65,19 @@ export const transformRadioGroup = (
     (node) => node.layerName === "Radio Button Group" && node.type === "FRAME"
   ) as BladeFrameNode;
 
-  const children = childrenWrapper.children
+  const { component: children, imports } = childrenWrapper.children
     .map(transformRadio)
-    .reduce((acc, val) => acc + val.component, "");
+    .reduce(
+      (acc, val) => {
+        acc.component = acc.component + val.component;
+        acc.imports = mergeImports(acc.imports ?? {}, val.imports ?? {});
+        return acc;
+      },
+      {
+        component: "",
+        imports: {},
+      }
+    );
 
   return {
     component: component("RadioGroup", {
@@ -74,5 +85,6 @@ export const transformRadioGroup = (
       defaultValues: defaultValues,
       children,
     }),
+    imports: mergeImports(imports ?? {}, bladeImports(["RadioGroup"])),
   };
 };

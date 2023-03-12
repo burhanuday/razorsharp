@@ -3,6 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 import { defaultValues } from "./constants";
 
 export const transformProgressBar = (
@@ -42,5 +43,8 @@ export const transformProgressBar = (
     },
   };
 
-  return { component: component("ProgressBar", { props, defaultValues }) };
+  return {
+    component: component("ProgressBar", { props, defaultValues }),
+    imports: bladeImports(["ProgressBar"]),
+  };
 };

@@ -5,6 +5,7 @@ import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
 import { defaultValues } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 
 // TODO blade text area component has a prop called
 // "showClearButton" but toggle doesn't exist in Figma
@@ -60,5 +61,8 @@ export const transformTextArea = (
     };
   }
 
-  return { component: component("TextArea", { props, defaultValues }) };
+  return {
+    component: component("TextArea", { props, defaultValues }),
+    imports: bladeImports(["TextArea"]),
+  };
 };

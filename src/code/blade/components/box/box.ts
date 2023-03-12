@@ -1,9 +1,8 @@
 import { BladeFrameNode, BladeGroupNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
-import { BLADE_IMPORT_PATH } from "../../constants/paths";
 import { generateBladeCode } from "../../main";
 import { component } from "../../utils/component";
-import { mergeImports } from "../../utils/imports";
+import { bladeImports, mergeImports } from "../../utils/imports";
 import { defaultValues, LAYOUT_MODES } from "./constants";
 import {
   getFlexAlignmentFromAxisAlignment,
@@ -33,9 +32,7 @@ export const transformFrameOrGroup = (
         defaultValues,
         children: children.component,
       }),
-      imports: mergeImports(children.imports ?? {}, {
-        [BLADE_IMPORT_PATH]: ["Box"],
-      }),
+      imports: mergeImports(children.imports ?? {}, bladeImports(["Box"])),
     };
   }
 
@@ -96,8 +93,6 @@ export const transformFrameOrGroup = (
       defaultValues,
       children: children.component,
     }),
-    imports: mergeImports(children.imports ?? {}, {
-      [BLADE_IMPORT_PATH]: ["Box"],
-    }),
+    imports: mergeImports(children.imports ?? {}, bladeImports(["Box"])),
   };
 };

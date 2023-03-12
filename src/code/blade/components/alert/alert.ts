@@ -10,7 +10,7 @@ import { isPresent } from "../../utils/isPresent";
 import { findNode } from "../../utils/findNode";
 import { defaultValues } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
-import { BLADE_IMPORT_PATH } from "../../constants/paths";
+import { bladeImports } from "../../utils/imports";
 
 export const transformAlert = (
   bladeInstance: BladeComponentInstanceNode
@@ -106,8 +106,6 @@ export const transformAlert = (
       props,
       defaultValues: defaultValues,
     }),
-    imports: {
-      [BLADE_IMPORT_PATH]: ["Alert"],
-    },
+    imports: bladeImports(["Alert"]),
   };
 };

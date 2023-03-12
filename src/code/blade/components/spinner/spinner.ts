@@ -5,6 +5,7 @@ import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
 import { defaultValues } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 
 export const transformSpinner = (
   bladeInstance: BladeComponentInstanceNode
@@ -41,5 +42,6 @@ export const transformSpinner = (
       props,
       defaultValues,
     }),
+    imports: bladeImports(["Spinner"]),
   };
 };

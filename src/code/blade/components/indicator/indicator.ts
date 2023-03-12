@@ -3,6 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 import { defaultValues } from "./constants";
 
 export const transformIndicator = (
@@ -25,5 +26,6 @@ export const transformIndicator = (
 
   return {
     component: component("Indicator", { props, defaultValues, children }),
+    imports: bladeImports(["Indicator"]),
   };
 };

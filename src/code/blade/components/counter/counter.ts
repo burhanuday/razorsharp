@@ -2,6 +2,7 @@ import { BladeComponentInstanceNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
+import { bladeImports } from "../../utils/imports";
 import { defaultValues } from "./constants";
 
 export const transformCounter = (
@@ -24,5 +25,8 @@ export const transformCounter = (
     },
   };
 
-  return { component: component("Counter", { props, defaultValues }) };
+  return {
+    component: component("Counter", { props, defaultValues }),
+    imports: bladeImports(["Counter"]),
+  };
 };

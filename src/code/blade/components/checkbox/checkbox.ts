@@ -5,6 +5,7 @@ import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
 import { checkboxDefaultValues } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 
 export const transformCheckbox = (
   bladeInstance: BladeComponentInstanceNode
@@ -41,5 +42,6 @@ export const transformCheckbox = (
       defaultValues: checkboxDefaultValues,
       children,
     }),
+    imports: bladeImports(["Checkbox"]),
   };
 };

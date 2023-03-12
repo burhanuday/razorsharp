@@ -3,6 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 import { defaultValues } from "./constants";
 import { getLinkIconProps } from "./utils";
 
@@ -38,5 +39,6 @@ export const transformLink = (
       defaultValues,
       children,
     }),
+    imports: bladeImports(["Link"]),
   };
 };

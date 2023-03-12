@@ -5,6 +5,7 @@ import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
 import { defaultValues } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 
 // TODO blade password component has a prop called
 // "showRevealButton" but toggle doesn't exist in Figma
@@ -56,5 +57,8 @@ export const transformPasswordInput = (
     };
   }
 
-  return { component: component("PasswordInput", { props, defaultValues }) };
+  return {
+    component: component("PasswordInput", { props, defaultValues }),
+    imports: bladeImports(["PasswordInput"]),
+  };
 };

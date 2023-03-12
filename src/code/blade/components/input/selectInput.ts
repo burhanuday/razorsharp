@@ -5,6 +5,7 @@ import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
 import { defaultValues } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 
 export const transformSelectInput = (
   bladeComponentInstance: BladeComponentInstanceNode
@@ -34,5 +35,8 @@ export const transformSelectInput = (
     };
   }
 
-  return { component: component("SelectInput", { props, defaultValues }) };
+  return {
+    component: component("SelectInput", { props, defaultValues }),
+    imports: bladeImports(["SelectInput"]),
+  };
 };

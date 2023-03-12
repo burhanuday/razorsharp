@@ -3,6 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 import { headingDefaultValues } from "./constants";
 
 export const transformHeading = (
@@ -40,5 +41,6 @@ export const transformHeading = (
       defaultValues: headingDefaultValues,
       children,
     }),
+    imports: bladeImports(["Heading"]),
   };
 };

@@ -3,6 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { findIconByLayerName } from "../../utils/findIconByLayerName";
+import { bladeImports } from "../../utils/imports";
 import { defaultValues } from "./constants";
 
 export const transformIconButton = (
@@ -28,5 +29,8 @@ export const transformIconButton = (
     },
   };
 
-  return { component: component("IconButton", { props, defaultValues }) };
+  return {
+    component: component("IconButton", { props, defaultValues }),
+    imports: bladeImports(["IconButton"]),
+  };
 };

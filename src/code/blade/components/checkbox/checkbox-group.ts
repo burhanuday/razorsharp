@@ -11,6 +11,7 @@ import { isPresent } from "../../utils/isPresent";
 import { findNode } from "../../utils/findNode";
 import { transformCheckbox } from "./checkbox";
 import { checkboxDefaultValues } from "./constants";
+import { bladeImports, mergeImports } from "../../utils/imports";
 
 export const transformCheckboxGroup = (
   bladeInstance: BladeComponentInstanceNode
@@ -64,9 +65,19 @@ export const transformCheckboxGroup = (
     (node) => node.layerName === "Checkbox Group" && node.type === "FRAME"
   ) as BladeFrameNode;
 
-  const children = childrenWrapper.children
+  const { component: children, imports } = childrenWrapper.children
     .map(transformCheckbox)
-    .reduce((acc, val) => acc + val.component, "");
+    .reduce(
+      (acc, val) => {
+        acc.component = acc.component + val.component;
+        acc.imports = mergeImports(acc.imports ?? {}, val.imports ?? {});
+        return acc;
+      },
+      {
+        component: "",
+        imports: {},
+      }
+    );
 
   return {
     component: component("CheckboxGroup", {
@@ -74,5 +85,6 @@ export const transformCheckboxGroup = (
       defaultValues: checkboxDefaultValues,
       children,
     }),
+    imports: mergeImports(imports ?? {}, bladeImports(["CheckboxGroup"])),
   };
 };

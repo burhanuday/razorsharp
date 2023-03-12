@@ -3,6 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
+import { bladeImports } from "../../utils/imports";
 import { titleDefaultValues } from "./constants";
 
 export const transformTitle = (
@@ -35,5 +36,6 @@ export const transformTitle = (
       defaultValues: titleDefaultValues,
       children,
     }),
+    imports: bladeImports(["Title"]),
   };
 };

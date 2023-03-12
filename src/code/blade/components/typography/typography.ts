@@ -1,6 +1,7 @@
 import { BladeProps, BladeTextNode } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { component } from "../../utils/component";
+import { bladeImports } from "../../utils/imports";
 import {
   getComponentName,
   getComponentVariant,
@@ -27,6 +28,7 @@ export const transformTextNode = (
         defaultValues: {},
         children: bladeTextNode.characters,
       }),
+      imports: bladeImports(["Text"]),
     };
   }
 
@@ -48,5 +50,6 @@ export const transformTextNode = (
       defaultValues,
       children: bladeTextNode.characters,
     }),
+    imports: bladeImports([name]),
   };
 };

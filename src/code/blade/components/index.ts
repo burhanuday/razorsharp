@@ -43,6 +43,7 @@ const getUnknownComponentOutput = (
     ${component.name} is either not supported yet or not a part of Blade.
     <${component.name} /> 
   */}`,
+    imports: {},
   };
 };
 
