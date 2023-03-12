@@ -7,7 +7,7 @@ import { BladeNode } from "./types/Blade";
 // Optimise for case when input hasnt changed
 
 // This shows the HTML page in "ui.html".
-figma.showUI(__html__, { width: 450, height: 550 });
+figma.showUI(__html__, { width: 450, height: 600 });
 
 const run = () => {
   if (figma.currentPage.selection.length === 0) {
