@@ -25,7 +25,7 @@
 | Card          |                              |
 | ProgressBar   | ✅ Done                      |
 | List          |                              |
-| SelectInput   |                              |
+| SelectInput   | ✅ Done                      |
 | Dropdown      |                              |
 | ActionList    |                              |
 | Layout        | ⚠️ Not yet released by Blade |
