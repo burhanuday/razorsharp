@@ -40,11 +40,14 @@ export const generateBladeCode = ({
         allImports = mergeImports(allImports, imports ?? {});
         break;
       }
-      case "TEXT":
-        componentCode += generateTextNodeCode(
+      case "TEXT": {
+        const { component, imports } = generateTextNodeCode(
           bladeNode as BladeTextNode
-        ).component;
+        );
+        componentCode += component;
+        allImports = mergeImports(allImports, imports ?? {});
         break;
+      }
 
       case "GROUP": {
         const { component, imports } = generateGroupNodeCode(
@@ -52,6 +55,7 @@ export const generateBladeCode = ({
         );
         componentCode += component;
         allImports = mergeImports(allImports, imports ?? {});
+        break;
       }
 
       default:
