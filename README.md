@@ -24,6 +24,16 @@ Work in progress
 
 - If you are a designer, help by pointing out bugs, suggesting improvements, or by creating a logo/cover image for Figma 😅.
 
+## Reporting issues
+
+Create a new GitHub issue or tag @Burhan on #design-system on the Razorpay Slack workspace.
+
+Please include the following information:
+
+- The component that you are trying to generate code for
+- Link to the Figma file
+- Screenshot of the Figma file and the generated code
+
 ## Current status
 
 Will shortly be moving this to GitHub projects. This is a work in progress
@@ -57,16 +67,6 @@ Will shortly be moving this to GitHub projects. This is a work in progress
 | Dropdown      |                              |
 | ActionList    |                              |
 | Layout        | ⚠️ Not yet released by Blade |
-
-## Reporting issues
-
-Create a new GitHub issue or tag @Burhan on #design-system on the Razorpay Slack workspace.
-
-Please include the following information:
-
-- The component that you are trying to generate code for
-- Link to the Figma file
-- Screenshot of the Figma file and the generated code
 
 ## Credits
 
