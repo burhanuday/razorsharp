@@ -20,6 +20,10 @@ Razorsharp is a Figma plugin that generates code for the Blade design system.
 
 Work in progress
 
+- If you are developer, help by contributing to the codebase. Contributions can be bug fixes, support for new components, or documentation improvements.
+
+- If you are a designer, help by pointing out bugs, suggesting improvements, or by creating a logo/cover image for Figma 😅.
+
 ## Current status
 
 Will shortly be moving this to GitHub projects. This is a work in progress
