@@ -1,4 +1,21 @@
-# Blade to code
+# Razorsharp
+
+> **Warning**
+> This is alpha software. Things may break and code may not be generated correctly. Please report any issues you find.
+
+Razorsharp is a Figma plugin that generates code for the Blade design system.
+
+## Usage guide
+
+Coming shortly
+
+## Contributing
+
+Work in progress
+
+## Current status
+
+Will shortly be moving this to GitHub projects. This is a work in progress
 
 | Component     | Status                       |
 | ------------- | ---------------------------- |
@@ -29,3 +46,20 @@
 | Dropdown      |                              |
 | ActionList    |                              |
 | Layout        | ⚠️ Not yet released by Blade |
+
+## Reporting issues
+
+Create a new GitHub issue. Please include the following information:
+
+- The component that you are trying to generate code for
+- Link to the Figma file
+- Screenshot of the Figma file and the generated code
+
+## Credits
+
+- The amazing Blade Design System team for creating such a great and consistent design system that made it easy to build this
+- [@varunachar](https://twitter.com/varunachar) for the [inspiration of the name for this plugin](https://twitter.com/varunachar/status/1629771631047610371?s=20)
+
+## License
+
+Licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
