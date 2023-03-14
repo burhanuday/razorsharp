@@ -6,9 +6,11 @@
 
 Razorsharp is a Figma plugin that generates code for the Blade design system.
 
-<img src="./docs/images/screenshot-1.png" height="200px" width="auto">
-<img src="./docs/images/screenshot-2.png" height="200px" width="auto">
-<img src="./docs/images/screenshot-3.png" height="200px" width="auto">
+<p float="left">
+    <img src="./docs/images/screenshot-1.png" width="200px" height="auto">
+    <img src="./docs/images/screenshot-2.png" width="200px" height="auto">
+    <img src="./docs/images/screenshot-3.png" width="200px" height="auto">
+</p>
 
 ## Usage guide
 
