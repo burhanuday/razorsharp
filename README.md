@@ -56,7 +56,9 @@ Will shortly be moving this to GitHub projects. This is a work in progress
 
 ## Reporting issues
 
-Create a new GitHub issue. Please include the following information:
+Create a new GitHub issue or tag @Burhan on #design-system on the Razorpay Slack workspace.
+
+Please include the following information:
 
 - The component that you are trying to generate code for
 - Link to the Figma file
