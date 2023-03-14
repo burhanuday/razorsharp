@@ -2,6 +2,10 @@
 
 > **Warning**
 >
+> Box layout primitive has not yet been released. For now, you will have to provide your own implementation of the Box component or wait till the Box component is released.
+
+> **Warning**
+>
 > This is alpha software. Things may break and code may not be generated correctly. Please report any issues you find.
 
 Razorsharp is a Figma plugin that generates code for the Blade design system.
