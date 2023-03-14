@@ -22,7 +22,7 @@ Do not expect this plugin to generate 100% production ready code. To get the mos
 
 ## Usage guide
 
-- [Usage guide for developers](docs/usage.md)
+For installation and usage instructions, please refer to the [usage guide](docs/usage.md).
 
 ## Contributing
 
