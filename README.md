@@ -14,7 +14,7 @@ Razorsharp is a Figma plugin that generates code for the Blade design system.
 
 ## Usage guide
 
-Coming shortly
+- [Usage guide for developers](docs/usage.md)
 
 ## Contributing
 
