@@ -42,9 +42,13 @@ export interface BladeGroupNode extends BladeNode {
   children: BladeNode[];
 }
 
+type JSXType = "string" | "boolean" | "number" | "instance";
+
 export type JSXValue = {
-  type: "string" | "boolean" | "number" | "instance";
+  type: JSXType;
   value: string;
 };
 
 export type BladeProps = Record<string, JSXValue>;
+
+export type BladeHelperProps = Record<string, JSXType>;

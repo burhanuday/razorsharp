@@ -3,6 +3,7 @@ import { CodePreview } from "./components/CodePreview/CodePreview";
 import { ToastProvider } from "./providers/Toast";
 import { ToastManager } from "./components/ToastManager/ToastManager";
 import { Message, Result } from "~/types/MessageTypes";
+import { Preferences } from "./components/Preferences/Preferences";
 
 const emptyPlaceholder: Result = {
   component: "Empty",
@@ -35,6 +36,7 @@ export function App() {
         <CodePreview content={code.imports} />
         <CodePreview content={code.component} />
       </section>
+      <Preferences />
       <ToastManager />
     </ToastProvider>
   );

@@ -1,3 +1,4 @@
+import { PLUGIN_CONFIG } from "./blade/config/config";
 import { generateBladeCode } from "./blade/main";
 import { generateImportsCode } from "./blade/utils/imports";
 import { convertIntoBladeNodes } from "./figmaUtils/convertIntoNodes";
@@ -41,6 +42,16 @@ figma.on("documentchange", () => {
   run();
 });
 
-// figma.ui.onmessage = (msg) => {
-//   run();
-// };
+figma.ui.onmessage = (msg) => {
+  if (msg.type === "preference") {
+    const key = msg.key;
+    switch (key) {
+      case "helpers":
+        PLUGIN_CONFIG.generateHelperCode = msg.value;
+        break;
+      default:
+        break;
+    }
+    run();
+  }
+};

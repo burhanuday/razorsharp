@@ -1,5 +1,6 @@
-import { BladeProps } from "~/code/types/Blade";
-import { attributes } from "./attributes";
+import { BladeHelperProps, BladeProps } from "~/code/types/Blade";
+import { PLUGIN_CONFIG } from "../config/config";
+import { attributes, generateHelperCode } from "./attributes";
 import { indent } from "./indent";
 import { isJSXValueEmpty } from "./isJSXValueEmpty";
 import { newLine } from "./newLine";
@@ -28,6 +29,7 @@ const filterPropsWithDefaultValues = (
 
 type Options = {
   props: BladeProps;
+  helpers?: BladeHelperProps;
   defaultValues: BladeProps;
   children?: string;
 };
@@ -38,9 +40,10 @@ export const component = (
     props: {},
     defaultValues: {},
     children: "",
+    helpers: {},
   }
 ) => {
-  const { props, defaultValues, children = "" } = options;
+  const { props, defaultValues, children = "", helpers } = options;
 
   let code = newLine("<" + componentName);
 
@@ -48,6 +51,8 @@ export const component = (
   const propsLength = Object.keys(filteredProps).length;
 
   code += attributes(filteredProps);
+  if (PLUGIN_CONFIG.generateHelperCode)
+    code += generateHelperCode(helpers || {});
 
   const shouldUseNewLine = propsLength > 0;
 
