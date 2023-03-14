@@ -26,7 +26,7 @@ To run the plugin, click on the "Plugins" menu and then click on "Razorsharp" th
 
 ### Generating code
 
-Once you have opened the plugin, you can click on any UI section to generate code
+Once you have opened the plugin, you can click on any UI section to generate code. You can also click on the copy button to copy the code to your clipboard.
 
 ![click on a UI section to generate code](./images/usage-running-the-plugin.png)
 
