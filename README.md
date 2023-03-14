@@ -66,7 +66,7 @@ Please include the following information:
 
 ## Credits
 
-- The amazing Blade Design System team for creating such a great and consistent design system that made it easy to build this
+- The amazing Blade Design System team for creating such a great and consistent design system that made it possible to build this
 - [@varunachar](https://twitter.com/varunachar) for the [inspiration of the name for this plugin](https://twitter.com/varunachar/status/1629771631047610371?s=20)
 
 ## License
