@@ -1,4 +1,9 @@
-import { BladeHelperProps, BladeProps, JSXValue } from "~/code/types/Blade";
+import {
+  BladeHelperProps,
+  BladeProps,
+  isJSXValue,
+  JSXValue,
+} from "~/code/types/Blade";
 import { indent } from "./indent";
 import { isJSXValueEmpty } from "./isJSXValueEmpty";
 import { newLine } from "./newLine";
@@ -33,7 +38,9 @@ export const attributes = (props: BladeProps): string => {
 
 export const generateHelperCode = (props: BladeHelperProps): string => {
   return Object.entries(props)
-    .map(([key, value]) => jsxAttribute(key, { type: value, value: "" }))
+    .map(([key, value]) =>
+      jsxAttribute(key, isJSXValue(value) ? value : { type: value, value: "" })
+    )
     .map((item) => newLine(indent(item)))
     .join("");
 };

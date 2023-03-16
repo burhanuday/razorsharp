@@ -51,4 +51,15 @@ export type JSXValue = {
 
 export type BladeProps = Record<string, JSXValue>;
 
-export type BladeHelperProps = Record<string, JSXType>;
+export type BladeHelperProps = Record<string, JSXType | JSXValue>;
+
+export const isJSXValue = (value: any): value is JSXValue => {
+  return typeof value === "object" && value.type && value.value;
+};
+
+export const isJSXType = (value: any): value is JSXType => {
+  return (
+    typeof value === "string" &&
+    ["string", "boolean", "number", "instance"].includes(value)
+  );
+};

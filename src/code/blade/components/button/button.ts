@@ -3,7 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { findNode } from "../../utils/findNode";
-import { defaultValues } from "./constants";
+import { defaultValues, helpers } from "./constants";
 import { transformButtonVariant } from "./utils";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
 import { findIconByLayerName } from "../../utils/findIconByLayerName";
@@ -66,6 +66,7 @@ export const transformButton = (
       props,
       defaultValues,
       children,
+      helpers,
     }),
     imports: bladeImports(["Button", icon]),
   };
