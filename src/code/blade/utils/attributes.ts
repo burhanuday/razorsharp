@@ -25,7 +25,7 @@ export const jsxAttribute = (key: string, jsxValue: JSXValue): string => {
 
 export const attributes = (props: BladeProps): string => {
   return Object.entries(props)
-    .filter(([_, jsxValue]) => !isJSXValueEmpty(jsxValue))
+    .filter(([key, jsxValue]) => key && !isJSXValueEmpty(jsxValue))
     .map(([key, value]) => jsxAttribute(key, value))
     .map((item) => newLine(indent(item)))
     .join("");

@@ -27,5 +27,5 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
-  "exclude": ["webpack.config.js", "dist/**"]
+  "exclude": ["webpack.config.js", "dist/**", "jest.config.ts"]
 }
