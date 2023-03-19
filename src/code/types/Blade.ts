@@ -5,6 +5,14 @@ export interface BladeNode {
   parent: BladeNode | null;
 }
 
+type Children =
+  | BladeComponentInstanceNode
+  | BladeFrameNode
+  | BladeTextNode
+  | BladeGroupNode
+  | BladeVectorNode
+  | BladeRectangleNode;
+
 type BladeComponentProperties = {
   [key: string]:
     | { type: ComponentPropertyType; value: string | boolean }
@@ -14,13 +22,13 @@ type BladeComponentProperties = {
 export interface BladeComponentInstanceNode extends BladeNode {
   componentProperties: BladeComponentProperties;
   type: "INSTANCE";
-  children: BladeNode[];
+  children: Children[];
   name: string | null;
 }
 
 export interface BladeFrameNode extends BladeNode {
   type: "FRAME";
-  children: BladeNode[];
+  children: Children[];
   layoutMode: FrameNode["layoutMode"];
   primaryAxisAlignItems: FrameNode["primaryAxisAlignItems"];
   counterAxisAlignItems: FrameNode["counterAxisAlignItems"];
@@ -39,7 +47,15 @@ export interface BladeTextNode extends BladeNode {
 
 export interface BladeGroupNode extends BladeNode {
   type: "GROUP";
-  children: BladeNode[];
+  children: Children[];
+}
+
+export interface BladeVectorNode extends BladeNode {
+  type: "VECTOR";
+}
+
+export interface BladeRectangleNode extends BladeNode {
+  type: "RECTANGLE";
 }
 
 type JSXType = "string" | "boolean" | "number" | "instance";
