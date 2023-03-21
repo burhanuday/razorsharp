@@ -1,17 +1,9 @@
-export interface BladeNode {
+export interface BaseNode {
   layerName: string;
   id: string;
   type: SceneNode["type"];
   parent: BladeNode | null;
 }
-
-type Children =
-  | BladeComponentInstanceNode
-  | BladeFrameNode
-  | BladeTextNode
-  | BladeGroupNode
-  | BladeVectorNode
-  | BladeRectangleNode;
 
 type BladeComponentProperties = {
   [key: string]:
@@ -19,16 +11,25 @@ type BladeComponentProperties = {
     | undefined;
 };
 
-export interface BladeComponentInstanceNode extends BladeNode {
+export interface BladeComponentInstanceNode extends BaseNode {
   componentProperties: BladeComponentProperties;
   type: "INSTANCE";
-  children: Children[];
+  children: BladeNode[];
   name: string | null;
 }
 
-export interface BladeFrameNode extends BladeNode {
+export type BladeNode =
+  | BladeComponentInstanceNode
+  | BladeFrameNode
+  | BladeTextNode
+  | BladeGroupNode
+  | BladeVectorNode
+  | BladeRectangleNode
+  | BaseNode;
+
+export interface BladeFrameNode extends BaseNode {
   type: "FRAME";
-  children: Children[];
+  children: BladeNode[];
   layoutMode: FrameNode["layoutMode"];
   primaryAxisAlignItems: FrameNode["primaryAxisAlignItems"];
   counterAxisAlignItems: FrameNode["counterAxisAlignItems"];
@@ -39,22 +40,22 @@ export interface BladeFrameNode extends BladeNode {
   itemSpacing: number;
 }
 
-export interface BladeTextNode extends BladeNode {
+export interface BladeTextNode extends BaseNode {
   characters: string;
   type: "TEXT";
   textStyleId: TextNode["textStyleId"];
 }
 
-export interface BladeGroupNode extends BladeNode {
+export interface BladeGroupNode extends BaseNode {
   type: "GROUP";
-  children: Children[];
+  children: BladeNode[];
 }
 
-export interface BladeVectorNode extends BladeNode {
+export interface BladeVectorNode extends BaseNode {
   type: "VECTOR";
 }
 
-export interface BladeRectangleNode extends BladeNode {
+export interface BladeRectangleNode extends BaseNode {
   type: "RECTANGLE";
 }
 
