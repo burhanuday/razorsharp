@@ -52,35 +52,35 @@ Please include the following information:
 
 Will shortly be moving this to GitHub projects. This is a work in progress
 
-| Component     | Status                       |
-| ------------- | ---------------------------- |
-| Button        | ✅ Done                      |
-| Link          | ✅ Done                      |
-| CheckboxGroup | ✅ Done                      |
-| Checkbox      | ✅ Done                      |
-| Text          | ✅ Done                      |
-| Title         | ✅ Done                      |
-| Heading       | ✅ Done                      |
-| RadioGroup    | ✅ Done                      |
-| Radio         | ✅ Done                      |
-| Badge         | ✅ Done                      |
-| Alert         | ✅ Done                      |
-| TextInput     | ✅ Done                      |
-| Spinner       | ✅ Done                      |
-| TextArea      | ✅ Done                      |
-| PasswordInput | ✅ Done                      |
-| Code          | ✅ Done                      |
-| OTPInput      | ✅ Done                      |
-| Counter       | ✅ Done                      |
-| IconButton    | ✅ Done                      |
-| Indicator     | ✅ Done                      |
-| Card          |                              |
-| ProgressBar   | ✅ Done                      |
-| List          |                              |
-| SelectInput   | ✅ Done                      |
-| Dropdown      |                              |
-| ActionList    |                              |
-| Layout        | ⚠️ Not yet released by Blade |
+| Component     | Status  |
+| ------------- | ------- |
+| Button        | ✅ Done |
+| Link          | ✅ Done |
+| CheckboxGroup | ✅ Done |
+| Checkbox      | ✅ Done |
+| Text          | ✅ Done |
+| Title         | ✅ Done |
+| Heading       | ✅ Done |
+| RadioGroup    | ✅ Done |
+| Radio         | ✅ Done |
+| Badge         | ✅ Done |
+| Alert         | ✅ Done |
+| TextInput     | ✅ Done |
+| Spinner       | ✅ Done |
+| TextArea      | ✅ Done |
+| PasswordInput | ✅ Done |
+| Code          | ✅ Done |
+| OTPInput      | ✅ Done |
+| Counter       | ✅ Done |
+| IconButton    | ✅ Done |
+| Indicator     | ✅ Done |
+| Card          |         |
+| ProgressBar   | ✅ Done |
+| List          |         |
+| SelectInput   | ✅ Done |
+| Dropdown      |         |
+| ActionList    |         |
+| Layout        | ✅ Done |
 
 ## Credits
 
