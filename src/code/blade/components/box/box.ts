@@ -83,6 +83,26 @@ export const transformFrameOrGroup = (
       value: `[${paddingValue.map((value) => `"${value}"`).join(", ")}]`,
       type: "instance",
     };
+
+    if (bladeFrame.primaryAxisSizingMode === "FIXED") {
+      const isFixedHeight = bladeFrame.layoutMode === "VERTICAL";
+      props[isFixedHeight ? "height" : "width"] = {
+        value: getTokenFromSpacingValue(
+          isFixedHeight ? bladeFrame.height : bladeFrame.width
+        ),
+        type: "string",
+      };
+    }
+
+    if (bladeFrame.counterAxisSizingMode === "FIXED") {
+      const isFixedHeight = bladeFrame.layoutMode === "HORIZONTAL";
+      props[isFixedHeight ? "height" : "width"] = {
+        value: getTokenFromSpacingValue(
+          isFixedHeight ? bladeFrame.height : bladeFrame.width
+        ),
+        type: "string",
+      };
+    }
   }
 
   let children: TransformFunctionReturnType = { component: "", imports: {} };

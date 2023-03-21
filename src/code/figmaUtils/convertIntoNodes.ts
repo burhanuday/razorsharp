@@ -81,6 +81,8 @@ const convertFrameToNode = (
     paddingBottom: figmaNode.paddingBottom,
     layoutMode: figmaNode.layoutMode,
     itemSpacing: figmaNode.itemSpacing,
+    height: figmaNode.height,
+    width: figmaNode.width,
   };
   return bladeFrame;
 };
