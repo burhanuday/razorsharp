@@ -42,6 +42,7 @@ export interface BladeFrameNode extends BaseNode {
   itemSpacing: FrameNode["itemSpacing"];
   width: FrameNode["width"];
   height: FrameNode["height"];
+  fills: FrameNode["fills"];
 }
 
 export interface BladeTextNode extends BaseNode {

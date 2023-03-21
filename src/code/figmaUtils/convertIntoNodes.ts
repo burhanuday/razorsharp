@@ -83,6 +83,9 @@ const convertFrameToNode = (
     itemSpacing: figmaNode.itemSpacing,
     height: figmaNode.height,
     width: figmaNode.width,
+    fills: Array.isArray(figmaNode.fills)
+      ? figmaNode.fills.filter((fill) => fill.visible)
+      : figmaNode.fills,
   };
   return bladeFrame;
 };

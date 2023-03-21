@@ -38,6 +38,7 @@ export const transformFrameOrGroup = (
   }
 
   // --- Frame specific code below ---
+  // --- Layout mode specific code below ---
   if (
     bladeFrame.layoutMode === LAYOUT_MODES.VERTICAL ||
     bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
@@ -100,6 +101,16 @@ export const transformFrameOrGroup = (
       };
     }
   }
+  // --- Layout mode specific end ---
+
+  // --- Background color ---
+  // if (bladeFrame.fills !== figma.mixed) {
+  //   const fill = bladeFrame.fills[0];
+  //   if (fill.type === "SOLID") {
+  //     // convert type RGB to HEX
+  //     // handle opacity
+  //   }
+  // }
 
   let children: TransformFunctionReturnType = { component: "", imports: {} };
   if (bladeFrame.children && bladeFrame.children.length > 0) {
