@@ -87,9 +87,7 @@ export const transformFrameOrGroup = (
     if (bladeFrame.primaryAxisSizingMode === "FIXED") {
       const isFixedHeight = bladeFrame.layoutMode === "VERTICAL";
       props[isFixedHeight ? "height" : "width"] = {
-        value: getTokenFromSpacingValue(
-          isFixedHeight ? bladeFrame.height : bladeFrame.width
-        ),
+        value: `${isFixedHeight ? bladeFrame.height : bladeFrame.width}px`,
         type: "string",
       };
     }
@@ -97,9 +95,7 @@ export const transformFrameOrGroup = (
     if (bladeFrame.counterAxisSizingMode === "FIXED") {
       const isFixedHeight = bladeFrame.layoutMode === "HORIZONTAL";
       props[isFixedHeight ? "height" : "width"] = {
-        value: getTokenFromSpacingValue(
-          isFixedHeight ? bladeFrame.height : bladeFrame.width
-        ),
+        value: `${isFixedHeight ? bladeFrame.height : bladeFrame.width}px`,
         type: "string",
       };
     }
