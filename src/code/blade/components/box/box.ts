@@ -6,6 +6,7 @@ import { bladeImports, mergeImports } from "../../utils/imports";
 import { defaultValues, LAYOUT_MODES } from "./constants";
 import {
   getFlexAlignmentFromAxisAlignment,
+  getPaddingValue,
   getTokenFromSpacingValue,
 } from "./utils";
 
@@ -36,6 +37,7 @@ export const transformFrameOrGroup = (
     };
   }
 
+  // --- Frame specific code below ---
   if (
     bladeFrame.layoutMode === LAYOUT_MODES.VERTICAL ||
     bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
@@ -55,29 +57,32 @@ export const transformFrameOrGroup = (
       type: "string",
     };
 
-    let justifyContent = "";
-    let alignItems = "";
-
-    if (bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL) {
-      justifyContent = getFlexAlignmentFromAxisAlignment(
-        bladeFrame.primaryAxisAlignItems
-      );
-      alignItems = getFlexAlignmentFromAxisAlignment(
-        bladeFrame.counterAxisAlignItems
-      );
-    }
-
-    if (bladeFrame.layoutMode === LAYOUT_MODES.VERTICAL) {
-      justifyContent = getFlexAlignmentFromAxisAlignment(
-        bladeFrame.counterAxisAlignItems
-      );
-      alignItems = getFlexAlignmentFromAxisAlignment(
-        bladeFrame.primaryAxisAlignItems
-      );
-    }
+    const justifyContent = getFlexAlignmentFromAxisAlignment(
+      bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
+        ? bladeFrame.primaryAxisAlignItems
+        : bladeFrame.counterAxisAlignItems
+    );
+    const alignItems = getFlexAlignmentFromAxisAlignment(
+      bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
+        ? bladeFrame.counterAxisAlignItems
+        : bladeFrame.primaryAxisAlignItems
+    );
 
     props["justifyContent"] = { value: justifyContent, type: "string" };
     props["alignItems"] = { value: alignItems, type: "string" };
+
+    const paddingValue = getPaddingValue({
+      top: bladeFrame.paddingTop,
+      right: bladeFrame.paddingRight,
+      bottom: bladeFrame.paddingBottom,
+      left: bladeFrame.paddingLeft,
+    });
+    // always generate an array. easier to generate this syntax
+    // since it works in all cases
+    props["padding"] = {
+      value: `[${paddingValue.map((value) => `"${value}"`).join(", ")}]`,
+      type: "instance",
+    };
   }
 
   let children: TransformFunctionReturnType = { component: "", imports: {} };

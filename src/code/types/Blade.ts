@@ -13,7 +13,7 @@ type BladeComponentProperties = {
 
 export interface BladeComponentInstanceNode extends BaseNode {
   componentProperties: BladeComponentProperties;
-  type: "INSTANCE";
+  type: InstanceNode["type"];
   children: BladeNode[];
   name: string | null;
 }
@@ -28,35 +28,41 @@ export type BladeNode =
   | BaseNode;
 
 export interface BladeFrameNode extends BaseNode {
-  type: "FRAME";
+  type: FrameNode["type"];
   children: BladeNode[];
   layoutMode: FrameNode["layoutMode"];
   primaryAxisAlignItems: FrameNode["primaryAxisAlignItems"];
+  primaryAxisSizingMode: FrameNode["primaryAxisSizingMode"];
   counterAxisAlignItems: FrameNode["counterAxisAlignItems"];
-  paddingLeft: number;
-  paddingRight: number;
-  paddingBottom: number;
-  paddingTop: number;
-  itemSpacing: number;
+  counterAxisSizingMode: FrameNode["counterAxisSizingMode"];
+  paddingLeft: FrameNode["paddingLeft"];
+  paddingRight: FrameNode["paddingRight"];
+  paddingBottom: FrameNode["paddingBottom"];
+  paddingTop: FrameNode["paddingTop"];
+  itemSpacing: FrameNode["itemSpacing"];
 }
 
 export interface BladeTextNode extends BaseNode {
-  characters: string;
-  type: "TEXT";
+  characters: TextNode["characters"];
+  type: TextNode["type"];
   textStyleId: TextNode["textStyleId"];
 }
 
 export interface BladeGroupNode extends BaseNode {
   type: "GROUP";
   children: BladeNode[];
+  rotation: GroupNode["rotation"];
+  layoutAlign: GroupNode["layoutAlign"];
+  layoutGrow: GroupNode["layoutGrow"];
+  layoutPositioning: GroupNode["layoutPositioning"];
 }
 
 export interface BladeVectorNode extends BaseNode {
-  type: "VECTOR";
+  type: VectorNode["type"];
 }
 
 export interface BladeRectangleNode extends BaseNode {
-  type: "RECTANGLE";
+  type: RectangleNode["type"];
 }
 
 type JSXType = "string" | "boolean" | "number" | "instance";

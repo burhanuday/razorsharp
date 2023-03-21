@@ -6,6 +6,10 @@ export const defaultValues: BladeProps = {
   gap: { value: "0", type: "string" },
   justifyContent: { value: "start", type: "string" },
   alignItems: { value: "start", type: "string" },
+  padding: {
+    value: '["spacing.0"]',
+    type: "instance",
+  },
 };
 
 export const LAYOUT_MODES = {

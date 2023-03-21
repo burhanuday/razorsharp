@@ -72,7 +72,9 @@ const convertFrameToNode = (
     type: "FRAME",
     children: convertIntoBladeNodes(figmaNode.children, bladeNode),
     counterAxisAlignItems: figmaNode.counterAxisAlignItems,
+    counterAxisSizingMode: figmaNode.counterAxisSizingMode,
     primaryAxisAlignItems: figmaNode.primaryAxisAlignItems,
+    primaryAxisSizingMode: figmaNode.primaryAxisSizingMode,
     paddingTop: figmaNode.paddingTop,
     paddingRight: figmaNode.paddingRight,
     paddingLeft: figmaNode.paddingLeft,
@@ -91,6 +93,10 @@ const convertGroupToNode = (
     ...bladeNode,
     type: "GROUP",
     children: convertIntoBladeNodes(figmaNode.children, bladeNode),
+    rotation: figmaNode.rotation,
+    layoutAlign: figmaNode.layoutAlign,
+    layoutGrow: figmaNode.layoutGrow,
+    layoutPositioning: figmaNode.layoutPositioning,
   };
   return bladeGroupNode;
 };
