@@ -40,6 +40,7 @@ export const transformFrameOrGroup = (
 
   // --- Frame specific code below ---
   // --- Layout mode specific code below ---
+  // TODO set alignItems and justifyContent when items don't fill the entire space
   if (
     bladeFrame.layoutMode === LAYOUT_MODES.VERTICAL ||
     bladeFrame.layoutMode === LAYOUT_MODES.HORIZONTAL
@@ -82,8 +83,11 @@ export const transformFrameOrGroup = (
     // always generate an array. easier to generate this syntax
     // since it works in all cases
     props["padding"] = {
-      value: `[${paddingValue.map((value) => `"${value}"`).join(", ")}]`,
-      type: "instance",
+      value:
+        paddingValue.length > 1
+          ? `[${paddingValue.map((value) => `"${value}"`).join(", ")}]`
+          : paddingValue[0],
+      type: paddingValue.length > 1 ? "instance" : "string",
     };
 
     if (bladeFrame.primaryAxisSizingMode === "FIXED") {

@@ -7,8 +7,8 @@ export const defaultValues: BladeProps = {
   justifyContent: { value: "start", type: "string" },
   alignItems: { value: "start", type: "string" },
   padding: {
-    value: '["spacing.0"]',
-    type: "instance",
+    value: "spacing.0",
+    type: "string",
   },
 };
 
