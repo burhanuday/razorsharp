@@ -12,15 +12,23 @@ export const jsxValue = (value: string | boolean | undefined): string => {
 };
 
 export const jsxAttribute = (key: string, jsxValue: JSXValue): string => {
+  const isCommented = jsxValue.isCommented || false;
+  const comment =
+    typeof jsxValue.comment === "string" && jsxValue.comment.length > 0
+      ? `// ${jsxValue.comment}\n`
+      : "";
+
+  const propPrefix = comment + (isCommented ? "// " : "");
+
   if (
     jsxValue.type === "number" ||
     jsxValue.type === "boolean" ||
     jsxValue.type === "instance"
   ) {
-    return `${key}={${jsxValue.value}}`;
+    return `${propPrefix}${key}={${jsxValue.value}}`;
   }
 
-  return `${key}="${jsxValue.value}"`;
+  return `${propPrefix}${key}="${jsxValue.value}"`;
 };
 
 export const attributes = (props: BladeProps): string => {

@@ -16,6 +16,10 @@ export interface BladeComponentInstanceNode extends BaseNode {
   type: InstanceNode["type"];
   children: BladeNode[];
   name: string | null;
+  fills: InstanceNode["fills"];
+  fillStyleId: InstanceNode["fillStyleId"];
+  width: InstanceNode["width"];
+  height: InstanceNode["height"];
 }
 
 export type BladeNode =
@@ -63,6 +67,8 @@ export interface BladeGroupNode extends BaseNode {
 
 export interface BladeVectorNode extends BaseNode {
   type: VectorNode["type"];
+  fillStyleId: VectorNode["fillStyleId"];
+  fills: VectorNode["fills"];
 }
 
 export interface BladeRectangleNode extends BaseNode {
@@ -74,6 +80,8 @@ type JSXType = "string" | "boolean" | "number" | "instance";
 export type JSXValue = {
   type: JSXType;
   value: string;
+  isCommented?: boolean;
+  comment?: string;
 };
 
 export type BladeProps = Record<string, JSXValue>;

@@ -918,6 +918,10 @@ export const dismissibleWarningAlert: BladeComponentInstanceNode = {
     },
   ],
   name: "Alert",
+  fills: [],
+  fillStyleId: "",
+  width: 0,
+  height: 0,
 };
 
 export const highContrastDismissibleWarningAlert: BladeComponentInstanceNode = {
@@ -1778,6 +1782,10 @@ export const highContrastDismissibleWarningAlert: BladeComponentInstanceNode = {
     },
   ],
   name: "Alert",
+  fills: [],
+  fillStyleId: "",
+  width: 0,
+  height: 0,
 };
 
 export const infoAlert: BladeComponentInstanceNode = {
@@ -2246,6 +2254,10 @@ export const infoAlert: BladeComponentInstanceNode = {
     },
   ],
   name: "Alert",
+  fills: [],
+  fillStyleId: "",
+  width: 0,
+  height: 0,
 };
 
 export const successAlert: BladeComponentInstanceNode = {
@@ -2714,6 +2726,10 @@ export const successAlert: BladeComponentInstanceNode = {
     },
   ],
   name: "Alert",
+  fills: [],
+  fillStyleId: "",
+  width: 0,
+  height: 0,
 };
 
 export const neutralAlert: BladeComponentInstanceNode = {
@@ -3182,6 +3198,10 @@ export const neutralAlert: BladeComponentInstanceNode = {
     },
   ],
   name: "Alert",
+  fills: [],
+  fillStyleId: "",
+  width: 0,
+  height: 0,
 };
 
 export const dangerAlert: BladeComponentInstanceNode = {
@@ -4066,4 +4086,8 @@ export const dangerAlert: BladeComponentInstanceNode = {
     },
   ],
   name: "Alert",
+  fills: [],
+  fillStyleId: "",
+  width: 0,
+  height: 0,
 };

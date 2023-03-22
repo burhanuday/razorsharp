@@ -4,6 +4,7 @@ import {
   BladeGroupNode,
   BladeNode,
   BladeTextNode,
+  BladeVectorNode,
 } from "../types/Blade";
 
 const convertBaseNode = (
@@ -45,6 +46,12 @@ const convertInstanceToNode = (
     type: "INSTANCE",
     children: convertIntoBladeNodes(figmaNode.children, bladeNode),
     name: getComponentName(figmaNode),
+    fills: Array.isArray(figmaNode.fills)
+      ? figmaNode.fills.filter((fill) => fill.visible)
+      : figmaNode.fills,
+    fillStyleId: figmaNode.fillStyleId,
+    width: figmaNode.width,
+    height: figmaNode.height,
   };
   return bladeComponentInstance;
 };
@@ -107,6 +114,21 @@ const convertGroupToNode = (
   return bladeGroupNode;
 };
 
+const convertVectorToNode = (
+  figmaNode: Readonly<VectorNode>,
+  bladeNode: BladeNode
+): BladeVectorNode => {
+  const bladeVectorNode: BladeVectorNode = {
+    ...bladeNode,
+    type: "VECTOR",
+    fills: Array.isArray(figmaNode.fills)
+      ? figmaNode.fills.filter((fill) => fill.visible)
+      : figmaNode.fills,
+    fillStyleId: figmaNode.fillStyleId,
+  };
+  return bladeVectorNode;
+};
+
 export const convertIntoBladeNodes = (
   figmaNodes: ReadonlyArray<SceneNode>,
   bladeParent: BladeNode | null
@@ -131,6 +153,9 @@ export const convertIntoBladeNodes = (
         break;
       case "GROUP":
         bladeNode = convertGroupToNode(figmaNode, bladeNode);
+        break;
+      case "VECTOR":
+        bladeNode = convertVectorToNode(figmaNode, bladeNode);
         break;
       default:
         break;

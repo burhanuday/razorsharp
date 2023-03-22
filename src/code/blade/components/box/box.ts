@@ -1,19 +1,19 @@
 import { BladeFrameNode, BladeGroupNode, BladeProps } from "~/code/types/Blade";
 import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { generateBladeCode } from "../../main";
+import {
+  convertStyleNameToBladeName,
+  isBackgroundColorToken,
+} from "../../utils/color";
 import { component } from "../../utils/component";
 import { bladeImports, mergeImports } from "../../utils/imports";
+import { getPaddingValue, getTokenFromSpacingValue } from "../../utils/spacing";
 import { defaultValues, LAYOUT_MODES } from "./constants";
-import {
-  getFlexAlignmentFromAxisAlignment,
-  getPaddingValue,
-  getTokenFromSpacingValue,
-} from "./utils";
+import { getFlexAlignmentFromAxisAlignment } from "./utils";
 
 export const transformFrameOrGroup = (
   bladeFrame: BladeFrameNode | BladeGroupNode
 ): TransformFunctionReturnType => {
-  console.log("🚀 ~ file: box.ts:16 ~ bladeFrame:", bladeFrame);
   const props: BladeProps = {};
 
   // TODO groups can have item spacing as well
@@ -115,18 +115,17 @@ export const transformFrameOrGroup = (
     const fillStyle = figma.getStyleById(bladeFrame.fillStyleId);
     if (fillStyle) {
       const styleName = fillStyle.name;
-      const bladeTokenName = styleName
-        .split("/")
-        .map((tokenPart) => tokenPart.toLowerCase())
-        .join(".");
+      const bladeTokenName = convertStyleNameToBladeName(styleName);
+      const isValidToken = isBackgroundColorToken(bladeTokenName);
 
-      // background color is for box component can only start with surface.background
-      if (bladeTokenName.startsWith("surface.background")) {
-        props["backgroundColor"] = {
-          value: bladeTokenName,
-          type: "string",
-        };
-      }
+      props["backgroundColor"] = {
+        value: bladeTokenName,
+        type: "string",
+        isCommented: !isValidToken,
+        comment: isValidToken
+          ? ""
+          : "Only surface.background tokens are supported by Box component",
+      };
     }
   }
 
