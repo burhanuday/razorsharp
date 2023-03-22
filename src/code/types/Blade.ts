@@ -43,6 +43,7 @@ export interface BladeFrameNode extends BaseNode {
   width: FrameNode["width"];
   height: FrameNode["height"];
   fills: FrameNode["fills"];
+  fillStyleId: FrameNode["fillStyleId"];
 }
 
 export interface BladeTextNode extends BaseNode {

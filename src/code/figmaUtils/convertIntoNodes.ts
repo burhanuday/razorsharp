@@ -86,6 +86,7 @@ const convertFrameToNode = (
     fills: Array.isArray(figmaNode.fills)
       ? figmaNode.fills.filter((fill) => fill.visible)
       : figmaNode.fills,
+    fillStyleId: figmaNode.fillStyleId,
   };
   return bladeFrame;
 };

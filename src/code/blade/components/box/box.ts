@@ -13,6 +13,7 @@ import {
 export const transformFrameOrGroup = (
   bladeFrame: BladeFrameNode | BladeGroupNode
 ): TransformFunctionReturnType => {
+  console.log("🚀 ~ file: box.ts:16 ~ bladeFrame:", bladeFrame);
   const props: BladeProps = {};
 
   // TODO groups can have item spacing as well
@@ -103,14 +104,27 @@ export const transformFrameOrGroup = (
   }
   // --- Layout mode specific end ---
 
+  // TODO add support for fills array
+  // TODO handle figma.mixed
   // --- Background color ---
-  // if (bladeFrame.fills !== figma.mixed) {
-  //   const fill = bladeFrame.fills[0];
-  //   if (fill.type === "SOLID") {
-  //     // convert type RGB to HEX
-  //     // handle opacity
-  //   }
-  // }
+  if (bladeFrame.fillStyleId !== figma.mixed) {
+    const fillStyle = figma.getStyleById(bladeFrame.fillStyleId);
+    if (fillStyle) {
+      const styleName = fillStyle.name;
+      const bladeTokenName = styleName
+        .split("/")
+        .map((tokenPart) => tokenPart.toLowerCase())
+        .join(".");
+
+      // background color is for box component can only start with surface.background
+      if (bladeTokenName.startsWith("surface.background")) {
+        props["backgroundColor"] = {
+          value: bladeTokenName,
+          type: "string",
+        };
+      }
+    }
+  }
 
   let children: TransformFunctionReturnType = { component: "", imports: {} };
   if (bladeFrame.children && bladeFrame.children.length > 0) {
