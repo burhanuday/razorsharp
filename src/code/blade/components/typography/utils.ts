@@ -20,11 +20,13 @@ export const getComponentVariant = (styleName: string): string => {
 };
 
 export const getComponentName = (variant: string): string => {
-  if (!variant) {
+  if (!variant || !(variant in VARIANT_TO_COMPONENT_MAP)) {
     return "Text";
   }
 
-  return VARIANT_TO_COMPONENT_MAP[variant];
+  return VARIANT_TO_COMPONENT_MAP[
+    variant as keyof typeof VARIANT_TO_COMPONENT_MAP
+  ];
 };
 
 export const getWeight = (styleName: string): string => {
@@ -34,5 +36,7 @@ export const getWeight = (styleName: string): string => {
 };
 
 export const getDefaultValues = (name: string): BladeProps => {
-  return COMPONENT_TO_DEFAULT_VALUES_MAP[name];
+  return COMPONENT_TO_DEFAULT_VALUES_MAP[
+    name as keyof typeof COMPONENT_TO_DEFAULT_VALUES_MAP
+  ];
 };

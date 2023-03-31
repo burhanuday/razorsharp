@@ -18,6 +18,7 @@ export function CodePreview({ content }: CodePreviewProps) {
   };
 
   const highlighted = useMemo(
+    // @ts-ignore
     () => Prism.highlight(content, Prism.languages["jsx"], "jsx"),
     [content]
   );
