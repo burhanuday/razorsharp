@@ -1,8 +1,8 @@
-# Razorsharp
-
 > **Warning**
 >
-> This is alpha software. Things may break and code may not be generated correctly. Please report any issues you find.
+> Razorsharp has been merged into the Blade codebase. This repository is a view only archive. Go to the [Blade codebase](https://github.com/razorpay/blade)
+
+# Razorsharp
 
 Razorsharp is a Figma plugin that generates code for the Blade design system.
 
