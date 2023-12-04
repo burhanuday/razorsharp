@@ -35,7 +35,7 @@ export function App() {
         <CodePreview content={code.imports} />
         <CodePreview content={code.component} />
       </section>
-      {/* <Preferences /> */}
+      <Preferences />
       <ToastManager />
     </ToastProvider>
   );

@@ -48,11 +48,14 @@ export const component = (
   let code = newLine("<" + componentName);
 
   const filteredProps = filterPropsWithDefaultValues(props, defaultValues);
-  const propsLength = Object.keys(filteredProps).length;
+  let propsLength = Object.keys(filteredProps).length;
 
   code += attributes(filteredProps);
-  if (PLUGIN_CONFIG.generateHelperCode)
+
+  if (PLUGIN_CONFIG.generateHelperCode) {
     code += generateHelperCode(helpers || {});
+    propsLength += Object.keys(helpers || {}).length;
+  }
 
   const shouldUseNewLine = propsLength > 0;
 

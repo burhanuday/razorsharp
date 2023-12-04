@@ -3,7 +3,7 @@ import { TransformFunctionReturnType } from "~/code/types/TransformFunction";
 import { jsxValue } from "../../utils/attributes";
 import { component } from "../../utils/component";
 import { isPresent } from "../../utils/isPresent";
-import { checkboxDefaultValues } from "./constants";
+import { checkboxDefaultValues, checkboxHelpers } from "./constants";
 import { findTextByLayerName } from "../../utils/findTextByLayerName";
 import { bladeImports } from "../../utils/imports";
 
@@ -41,6 +41,7 @@ export const transformCheckbox = (
       props,
       defaultValues: checkboxDefaultValues,
       children,
+      helpers: checkboxHelpers,
     }),
     imports: bladeImports(["Checkbox"]),
   };
